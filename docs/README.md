@@ -2,16 +2,24 @@
 
 Index of all project specification documents. These files define the system **before** building it (spec-first).
 
-## Documents
+## Core Documents
 
 | # | Document | Description |
 |---|----------|-------------|
 | 1 | [Product vision](01-vision.md) | Purpose, scope, and value proposition |
-| 2 | [Users and use cases](02-users-and-use-cases.md) | Roles, user profiles, and main use cases |
-| 3 | [Features](03-features.md) | System inputs, outputs, and states |
-| 4 | [User flows](04-user-flows.md) | Happy path and alternative flows |
-| 5 | [Architecture](05-architecture.md) | Tech stack, data flow diagram, and decisions |
-| 6 | [Non-functional requirements](06-non-functional-requirements.md) | Performance, security, accessibility, and more |
+| 2 | [Architecture](02-architecture.md) | Tech stack, data flow diagram, and decisions |
+| 3 | [Non-functional requirements](03-non-functional-requirements.md) | Performance, security, accessibility, and more |
+
+## Atomic Specifications (Features)
+
+| # | Document | Description |
+|---|----------|-------------|
+| 1 | [Catalog](specs/01-catalog.md) | Browse, search, and filter the store's products |
+| 2 | [Product Detail](specs/02-product-detail.md) | Product variants, images, and real-time stock |
+| 3 | [Shopping Cart](specs/03-shopping-cart.md) | Persistent cart and item management |
+| 4 | [Checkout](specs/04-checkout.md) | Delivery zones, payment, and order placement |
+| 5 | [Authentication](specs/05-authentication.md) | Registration, login, password recovery, and profile |
+| 6 | [Admin Management](specs/06-admin-management.md) | Store configuration, inventory, and order status updates |
 
 ## Conventions
 
