@@ -1,0 +1,7 @@
+{
+  "name": "ionic-scaffold-tmp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

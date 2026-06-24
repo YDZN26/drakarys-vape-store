@@ -134,6 +134,12 @@ discount_codes (
   id, code, type,  -- percentage | fixed
   value, max_uses, uses_count, valid_until, active
 )
+
+-- Store operating hours / holiday mode (single row)
+store_settings (
+  id uuid PK, opens_at time, closes_at time, days_open int[],
+  holiday_mode boolean, closed_message text
+)
 ```
 
 ---
