@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  align-items: center;
+}
+
+.sort-select {
+  --padding-start: 8px;
+  --padding-end: 4px;
+  --placeholder-color: rgba(255, 255, 255, 0.45);
+  --color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  font-weight: 500;
+  min-width: 150px;
+}

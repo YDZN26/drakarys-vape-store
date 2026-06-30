@@ -1,0 +1,15 @@
+<div class="active-chips" *ngIf="hasFilters">
+  <ion-chip
+    *ngFor="let f of activeFilters"
+    color="primary"
+    outline
+    (click)="remove(f.key)"
+  >
+    {{ f.label }}
+    <ion-icon name="close-circle" slot="end"></ion-icon>
+  </ion-chip>
+  <ion-chip color="danger" outline (click)="clear()">
+    Clear all
+    <ion-icon name="trash-outline" slot="end"></ion-icon>
+  </ion-chip>
+</div>

@@ -1,0 +1,18 @@
+:host {
+  display: block;
+  background: #0d0d14;
+  padding: 0.625rem 0.75rem 0;
+}
+
+ion-searchbar {
+  --background: rgba(255, 255, 255, 0.07);
+  --color: #e8eaf0;
+  --placeholder-color: rgba(255, 255, 255, 0.35);
+  --icon-color: rgba(255, 255, 255, 0.4);
+  --clear-button-color: rgba(255, 255, 255, 0.4);
+  --border-radius: 14px;
+  --box-shadow: none;
+  --cancel-button-color: rgba(255, 255, 255, 0.6);
+  padding: 0;
+  font-size: 0.9375rem;
+}

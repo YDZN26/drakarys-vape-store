@@ -1,0 +1,44 @@
+ion-content.catalog-content {
+  --background: #0d0d14;
+}
+
+// ── Toolbar ──────────────────────────────────────────────────────────────────
+
+.catalog-toolbar {
+  --background: rgba(13, 13, 20, 0.97);
+  --color: #ffffff;
+  --border-color: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+
+  .toolbar-brand {
+    font-size: 1.0625rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+  }
+
+  .catalog-back-btn {
+    --color: rgba(255, 255, 255, 0.8);
+  }
+
+  .catalog-icon-btn {
+    --color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+// ── Sort / filter row ─────────────────────────────────────────────────────────
+
+.toolbar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.375rem 0.875rem 0.375rem 0.5rem;
+  background: #111120;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  .filter-btn {
+    --color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+}

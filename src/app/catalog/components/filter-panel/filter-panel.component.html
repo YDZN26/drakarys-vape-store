@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Filters</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="reset()" color="medium">Reset</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list lines="none">
+    <ion-list-header>
+      <ion-label>
+        Precio: Bs. {{ priceRange.lower }} – Bs. {{ priceRange.upper }}
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-range
+        dual-knobs
+        [min]="0"
+        [max]="1500"
+        [step]="5"
+        [value]="priceRange"
+        (ionChange)="onPriceChange($event)"
+        pin
+        color="primary"
+      >
+        <ion-label slot="start">Bs. 0</ion-label>
+        <ion-label slot="end">Bs. 1500</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-actions">
+      <ion-button expand="block" (click)="apply()">Apply Filters</ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

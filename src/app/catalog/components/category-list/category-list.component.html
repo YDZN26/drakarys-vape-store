@@ -1,0 +1,15 @@
+<div class="category-list">
+  <ion-chip
+    [class.active]="activeCategoryId === null"
+    (click)="select(null)"
+  >
+    All
+  </ion-chip>
+  <ion-chip
+    *ngFor="let category of categories"
+    [class.active]="activeCategoryId === category.id"
+    (click)="select(category.id)"
+  >
+    {{ category.name }}
+  </ion-chip>
+</div>

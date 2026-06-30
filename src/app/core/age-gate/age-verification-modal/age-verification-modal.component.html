@@ -1,0 +1,36 @@
+<ion-content class="age-gate-content">
+  <div class="age-gate-body">
+    <div class="brand-badge">
+      <img src="assets/icon/favicon.png" alt="Drakarys" class="logo" />
+    </div>
+
+    <h1>¿Tienes 18 años o más?</h1>
+    <p>
+      Este sitio vende productos destinados exclusivamente a adultos.
+      Debes tener 18 años o más para ingresar.
+    </p>
+
+    <ion-button
+      expand="block"
+      color="success"
+      size="large"
+      class="age-btn"
+      (click)="confirm()"
+    >
+      <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+      SÍ, SOY MAYOR DE EDAD
+    </ion-button>
+
+    <ion-button
+      expand="block"
+      color="danger"
+      size="large"
+      fill="outline"
+      class="age-btn"
+      (click)="decline()"
+    >
+      <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+      NO, SOY MENOR DE EDAD
+    </ion-button>
+  </div>
+</ion-content>
