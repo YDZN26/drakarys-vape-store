@@ -43,9 +43,9 @@
 ┌─────────────────────────────────────────┐
 │           PostgreSQL (Supabase)         │
 │                                         │
-│  Tables: products, variants, orders,    │
-│  order_items, users, categories,        │
-│  discount_codes                         │
+│  Tables: producto, orders, order_items, │
+│  categories, profiles, discount_codes,  │
+│  usuario (internal only)                │
 │  Row Level Security enabled             │
 └─────────────────────────────────────────┘
 ```
@@ -99,19 +99,26 @@ Response → Angular shows success screen
 categories (id, name, slug, image_url, created_at)
 
 -- Base products
-products (
-  id, category_id, name, brand, description,
-  base_price, images jsonb, status,  -- status: available | out_of_stock | coming_soon | inactive
-  created_at, updated_at
-)
-
--- Product variants (flavor + nicotine + size)
-product_variants (
-  id, product_id, flavor, nicotine_mg, size_ml,
-  price_override, stock, sku, created_at
+-- Real Supabase table name is "producto" (Spanish), shared with the in-store
+-- POS/inventory app. Each row is already a complete sellable unit (e.g. one
+-- flavor + nicotine strength combination) — there is no separate variants
+-- table and none is planned. The Angular product service maps this table to
+-- the TypeScript "Product" model (English field names).
+producto (
+  producto_id, codigo_barras, imagen, nombre, precio, costo, stock,
+  descripcion, categoria_id, estado,       -- estado: available | out_of_stock | coming_soon | inactive
+  flavor character varying NULL,             -- additive migration, nullable
+  nicotine_mg numeric NULL,                  -- additive migration, nullable
+  product_type character varying NULL,       -- additive migration, nullable
+  featured boolean NOT NULL DEFAULT false,   -- additive migration
+  images jsonb NULL                          -- additive migration, nullable
 )
 
 -- Users (extends Supabase auth.users)
+-- Customer authentication uses Supabase Auth (auth.users) natively.
+-- This "profiles" table is exclusively for web store customers and is
+-- unrelated to the internal "usuario" table (plaintext-password staff
+-- login used only by the internal POS/inventory app).
 profiles (
   id references auth.users, full_name, phone,
   default_address jsonb, created_at
@@ -126,7 +133,7 @@ orders (
 
 -- Items per order
 order_items (
-  id, order_id, variant_id, quantity, unit_price, subtotal
+  id, order_id, product_id, quantity, unit_price, subtotal
 )
 
 -- Discount codes
@@ -148,12 +155,12 @@ store_settings (
 
 | Table | Policy | Description |
 |-------|--------|-------------|
-| `products` | Public SELECT | Anyone can read active products |
-| `product_variants` | Public SELECT | Anyone can read available variants |
+| `producto` | Public SELECT | Anyone can read active products; maps directly to the `Product` model — no variants table involved |
 | `profiles` | Own SELECT / UPDATE | User can only read and edit their own profile |
 | `orders` | Own SELECT / INSERT | User can only see their own orders |
 | `order_items` | SELECT via orders | Inherited from the user's order |
 | `discount_codes` | Authenticated SELECT | Only users with an active session can query |
+| `usuario` | No public policy | Internal-only table for staff POS/inventory login; never exposed to the web store |
 
 ---
 

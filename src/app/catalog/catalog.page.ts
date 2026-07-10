@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { InfiniteScrollCustomEvent, ModalController } from '@ionic/angular';
 import { Observable, Subscription, filter, take } from 'rxjs';
 import { Category } from '../core/models/category.model';
-import { CatalogItem } from '../core/models/catalog-item.model';
+import { Product } from '../core/models/product.model';
 import { ProductFilters } from '../core/models/product-filters.model';
 import { SortOption } from '../core/models/sort-option.model';
 import { CategoryService } from './services/category.service';
@@ -17,7 +17,7 @@ import { FilterPanelComponent } from './components/filter-panel/filter-panel.com
   standalone: false,
 })
 export class CatalogPage implements OnInit, OnDestroy {
-  products$!: Observable<CatalogItem[]>;
+  products$!: Observable<Product[]>;
   loading$!: Observable<boolean>;
   hasMore$!: Observable<boolean>;
   filters$!: Observable<ProductFilters>;
@@ -50,15 +50,15 @@ export class CatalogPage implements OnInit, OnDestroy {
 
     this.subs.add(
       this.route.queryParams.subscribe(params => {
-        if (params['categoryName']) {
-          this.catalogState.setFilters({ categoryName: params['categoryName'] });
+        if (params['categoryId']) {
+          this.catalogState.setFilters({ categoryId: Number(params['categoryId']) });
         }
       })
     );
   }
 
-  get activeCategoryId(): string | null {
-    return this.catalogState.currentFilters.categoryName ?? null;
+  get activeCategoryId(): number | null {
+    return this.catalogState.currentFilters.categoryId ?? null;
   }
 
   get currentSort(): SortOption {
@@ -69,11 +69,11 @@ export class CatalogPage implements OnInit, OnDestroy {
     this.catalogState.setSearch(term);
   }
 
-  onCategorySelect(categoryName: string | null): void {
-    if (categoryName) {
-      this.catalogState.setFilters({ categoryName });
+  onCategorySelect(categoryId: number | null): void {
+    if (categoryId !== null) {
+      this.catalogState.setFilters({ categoryId });
     } else {
-      this.catalogState.removeFilter('categoryName');
+      this.catalogState.removeFilter('categoryId');
     }
   }
 
@@ -103,7 +103,7 @@ export class CatalogPage implements OnInit, OnDestroy {
     this.catalogState.clearFilters();
   }
 
-  onProductTap(productId: string): void {
+  onProductTap(productId: number): void {
     this.router.navigate(['/product', productId]);
   }
 

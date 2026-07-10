@@ -6,7 +6,7 @@ import {
   take,
 } from 'rxjs';
 import { debounceTime, switchMap, tap } from 'rxjs/operators';
-import { CatalogItem } from '../../core/models/catalog-item.model';
+import { Product } from '../../core/models/product.model';
 import { ProductFilters } from '../../core/models/product-filters.model';
 import { SortOption } from '../../core/models/sort-option.model';
 import { ProductService } from './product.service';
@@ -18,7 +18,7 @@ export class CatalogStateService implements OnDestroy {
   private _filters = new BehaviorSubject<ProductFilters>({});
   private _sort = new BehaviorSubject<SortOption>(SortOption.Relevance);
   private _search = new BehaviorSubject<string>('');
-  private _products = new BehaviorSubject<CatalogItem[]>([]);
+  private _products = new BehaviorSubject<Product[]>([]);
   private _loading = new BehaviorSubject<boolean>(false);
   private _hasMore = new BehaviorSubject<boolean>(true);
   private _page = 0;

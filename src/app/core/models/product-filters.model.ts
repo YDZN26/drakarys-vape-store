@@ -1,5 +1,5 @@
 export interface ProductFilters {
-  categoryName?: string;
+  categoryId?: number;
   searchTerm?: string;
   minPrice?: number;
   maxPrice?: number;

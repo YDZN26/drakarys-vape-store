@@ -1,5 +1,11 @@
 # Spec 05 — Authentication
 
+> **DIFERIDO — fuera de alcance del lanzamiento v1.** No es necesario para el flujo de carrito + WhatsApp de la v1. Este spec se conserva como referencia para una fase futura, no debe implementarse todavía.
+>
+> Al reactivarse este spec, Spec 03 (Shopping Cart) debe extenderse para agregar persistencia y sincronización de carrito ligada a la cuenta del cliente.
+>
+> Nota: el contenido detallado de este documento (inputs, outputs, reglas de negocio) aún puede referenciar conceptos ya descartados en specs activos (variantes de producto, checkout de pago, cuentas de cliente sincronizadas). Debe revisarse y actualizarse en conjunto al momento de reactivar este spec, no antes.
+
 ## Purpose
 
 Allow customers to create an account, access it securely, recover it if credentials are lost, and keep their personal details up to date. Authentication unlocks order history, a persistent cart tied to the account, and a saved shipping address.

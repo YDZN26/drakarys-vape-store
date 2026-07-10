@@ -36,6 +36,7 @@
 
   <app-active-filter-chips
     [filters]="(filters$ | async) ?? {}"
+    [categories]="categories"
     (removeFilter)="onRemoveFilter($event)"
     (clearAll)="onClearFilters()"
   ></app-active-filter-chips>

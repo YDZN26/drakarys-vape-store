@@ -9,10 +9,10 @@ import { Category } from '../../../core/models/category.model';
 })
 export class EmptyStateComponent {
   @Input() categories: Category[] = [];
-  @Output() categorySelect = new EventEmitter<string>();
+  @Output() categorySelect = new EventEmitter<number>();
   @Output() clearFilters = new EventEmitter<void>();
 
-  onCategorySelect(categoryId: string): void {
+  onCategorySelect(categoryId: number): void {
     this.categorySelect.emit(categoryId);
   }
 

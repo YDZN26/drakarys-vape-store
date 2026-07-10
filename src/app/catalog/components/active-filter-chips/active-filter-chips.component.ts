@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Category } from '../../../core/models/category.model';
 import { ProductFilters } from '../../../core/models/product-filters.model';
 
 export interface ActiveFilter {
@@ -13,6 +14,8 @@ export interface ActiveFilter {
   standalone: false,
 })
 export class ActiveFilterChipsComponent {
+  @Input() categories: Category[] = [];
+
   @Input() set filters(value: ProductFilters) {
     this._filters = value;
     this.activeFilters = this.buildActiveFilters(value);
@@ -30,8 +33,9 @@ export class ActiveFilterChipsComponent {
   private buildActiveFilters(filters: ProductFilters): ActiveFilter[] {
     const result: ActiveFilter[] = [];
 
-    if (filters.categoryName) {
-      result.push({ key: 'categoryName', label: filters.categoryName });
+    if (filters.categoryId !== undefined) {
+      const category = this.categories.find(c => c.id === filters.categoryId);
+      result.push({ key: 'categoryId', label: category?.name ?? 'Category' });
     }
     if (filters.searchTerm) {
       result.push({ key: 'searchTerm', label: `"${filters.searchTerm}"` });

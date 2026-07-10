@@ -9,10 +9,10 @@ import { Category } from '../../../core/models/category.model';
 })
 export class CategoryListComponent {
   @Input() categories: Category[] = [];
-  @Input() activeCategoryId: string | null = null;
-  @Output() categorySelect = new EventEmitter<string | null>();
+  @Input() activeCategoryId: number | null = null;
+  @Output() categorySelect = new EventEmitter<number | null>();
 
-  select(categoryId: string | null): void {
+  select(categoryId: number | null): void {
     this.categorySelect.emit(categoryId);
   }
 }

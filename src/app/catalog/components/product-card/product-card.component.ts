@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CatalogItem } from '../../../core/models/catalog-item.model';
+import { Product } from '../../../core/models/product.model';
 import { StockStatus, getStockStatus } from '../../../core/models/stock-status.model';
 
 @Component({
@@ -9,11 +9,11 @@ import { StockStatus, getStockStatus } from '../../../core/models/stock-status.m
   standalone: false,
 })
 export class ProductCardComponent {
-  @Input() item!: CatalogItem;
-  @Output() productTap = new EventEmitter<string>();
+  @Input() product!: Product;
+  @Output() productTap = new EventEmitter<number>();
 
   get stockStatus(): StockStatus {
-    return getStockStatus(this.item.stock);
+    return getStockStatus(this.product.stock);
   }
 
   get stockBadgeColor(): string {
@@ -33,10 +33,10 @@ export class ProductCardComponent {
   }
 
   get mainImage(): string {
-    return this.item.imagen ?? 'assets/icon/favicon.png';
+    return this.product.imageUrl ?? 'assets/icon/favicon.png';
   }
 
   tap(): void {
-    this.productTap.emit(this.item.producto_id);
+    this.productTap.emit(this.product.id);
   }
 }

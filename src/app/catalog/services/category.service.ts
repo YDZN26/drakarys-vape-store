@@ -3,11 +3,11 @@ import { of, Observable } from 'rxjs';
 import { Category } from '../../core/models/category.model';
 
 const MOCK_CATEGORIES: Category[] = [
-  { id: 'Desechables', name: 'Desechables', slug: 'desechables', imageUrl: '' },
-  { id: 'Pods', name: 'Pods', slug: 'pods', imageUrl: '' },
-  { id: 'Mods', name: 'Mods', slug: 'mods', imageUrl: '' },
-  { id: 'Sales de Nicotina', name: 'Sales de Nicotina', slug: 'sales-de-nicotina', imageUrl: '' },
-  { id: 'Accesorios', name: 'Accesorios', slug: 'accesorios', imageUrl: '' },
+  { id: 1, name: 'Desechables', slug: 'desechables', imageUrl: '' },
+  { id: 2, name: 'Pods', slug: 'pods', imageUrl: '' },
+  { id: 3, name: 'Mods', slug: 'mods', imageUrl: '' },
+  { id: 4, name: 'Sales de Nicotina', slug: 'sales-de-nicotina', imageUrl: '' },
+  { id: 5, name: 'Accesorios', slug: 'accesorios', imageUrl: '' },
 ];
 
 @Injectable({ providedIn: 'root' })

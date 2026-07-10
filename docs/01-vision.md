@@ -23,9 +23,15 @@
 ### In scope
 
 - Product catalog with categories, filters, and search.
-- Product page with variants (flavor, nicotine, size), images, and stock status.
-- Persistent cart and complete checkout flow.
+- Product page with images and real-time stock status.
+- Persistent cart (localStorage) with WhatsApp order button.
+- Age verification gate on first visit (legal requirement).
+- Store hours banner (informational, does not block browsing).
+
+### Fuera de alcance de v1 (planeado a futuro)
+
 - Customer authentication (registration, login, session management).
+- Complete checkout flow with real online payment.
 - Order management with statuses and tracking.
 - Basic admin panel to manage products and orders.
 - Transactional emails (order confirmation, status updates).

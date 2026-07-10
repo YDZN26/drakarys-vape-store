@@ -1,13 +1,15 @@
 export interface Product {
-  id: string;
-  categoryId: string;
+  id: number;
+  categoryId: number | null;
   name: string;
-  brand: string;
-  description: string;
-  basePrice: number;
+  description: string | null;
+  price: number;
+  stock: number;
+  isActive: boolean;
+  imageUrl: string | null;
   images: string[];
-  status: 'active' | 'inactive';
-  type: string;
+  flavor: string | null;
+  nicotineMg: number | null;
+  productType: string | null;
   featured: boolean;
-  createdAt: string;
 }

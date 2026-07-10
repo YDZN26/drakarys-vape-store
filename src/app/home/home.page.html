@@ -42,7 +42,7 @@
           <span class="slide-tag">TOP VENTAS</span>
           <h1 class="slide-title">Elf Bar BC5000</h1>
           <p class="slide-subtitle">Desechable recargable · 5 000 puffs · múltiples sabores</p>
-          <ion-button fill="solid" color="light" class="slide-cta" (click)="goToCategory('Desechables')">
+          <ion-button fill="solid" color="light" class="slide-cta" (click)="goToCategory(1)">
             Comprar
             <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
           </ion-button>
@@ -54,7 +54,7 @@
           <span class="slide-tag">OFERTA ESPECIAL</span>
           <h1 class="slide-title">Sales de Nicotina</h1>
           <p class="slide-subtitle">Sabores premium desde Bs. 179 · 30 ml</p>
-          <ion-button fill="solid" color="light" class="slide-cta" (click)="goToCategory('Sales de Nicotina')">
+          <ion-button fill="solid" color="light" class="slide-cta" (click)="goToCategory(4)">
             Ver Ofertas
             <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
           </ion-button>
@@ -79,17 +79,17 @@
       scrollable="true"
     >
       <ion-segment-button value="ALL"><ion-label>Todos</ion-label></ion-segment-button>
-      <ion-segment-button value="Desechables"><ion-label>Desechables</ion-label></ion-segment-button>
-      <ion-segment-button value="Pods"><ion-label>Pods</ion-label></ion-segment-button>
-      <ion-segment-button value="Mods"><ion-label>Mods</ion-label></ion-segment-button>
-      <ion-segment-button value="Sales de Nicotina"><ion-label>Líquidos</ion-label></ion-segment-button>
-      <ion-segment-button value="Accesorios"><ion-label>Accesorios</ion-label></ion-segment-button>
+      <ion-segment-button [value]="1"><ion-label>Desechables</ion-label></ion-segment-button>
+      <ion-segment-button [value]="2"><ion-label>Pods</ion-label></ion-segment-button>
+      <ion-segment-button [value]="3"><ion-label>Mods</ion-label></ion-segment-button>
+      <ion-segment-button [value]="4"><ion-label>Líquidos</ion-label></ion-segment-button>
+      <ion-segment-button [value]="5"><ion-label>Accesorios</ion-label></ion-segment-button>
     </ion-segment>
 
     <div class="products-grid">
       <app-product-card
-        *ngFor="let item of filteredProducts$ | async"
-        [item]="item"
+        *ngFor="let product of filteredProducts$ | async"
+        [product]="product"
         (productTap)="goToProduct($event)"
       ></app-product-card>
     </div>
@@ -183,11 +183,11 @@
       <div class="footer-col">
         <h4>Productos</h4>
         <ul>
-          <li><a (click)="goToCategory('Desechables')">Desechables</a></li>
-          <li><a (click)="goToCategory('Pods')">Pods</a></li>
-          <li><a (click)="goToCategory('Mods')">Mods</a></li>
-          <li><a (click)="goToCategory('Sales de Nicotina')">Sales de Nicotina</a></li>
-          <li><a (click)="goToCategory('Accesorios')">Accesorios</a></li>
+          <li><a (click)="goToCategory(1)">Desechables</a></li>
+          <li><a (click)="goToCategory(2)">Pods</a></li>
+          <li><a (click)="goToCategory(3)">Mods</a></li>
+          <li><a (click)="goToCategory(4)">Sales de Nicotina</a></li>
+          <li><a (click)="goToCategory(5)">Accesorios</a></li>
         </ul>
       </div>
 

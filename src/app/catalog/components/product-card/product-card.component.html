@@ -1,7 +1,7 @@
 <ion-card class="product-card">
   <div class="card-image-wrapper">
-    <ng-container *ngIf="item.imagen; else placeholder">
-      <img [src]="item.imagen" [alt]="item.producto_nombre" />
+    <ng-container *ngIf="product.imageUrl; else placeholder">
+      <img [src]="product.imageUrl" [alt]="product.name" />
     </ng-container>
     <ng-template #placeholder>
       <div class="img-placeholder">
@@ -13,9 +13,9 @@
     </ion-badge>
   </div>
   <ion-card-content>
-    <p class="brand">{{ item.categoria_nombre }}</p>
-    <h3 class="name">{{ item.producto_nombre }}</h3>
-    <p class="price">Bs. {{ item.precio | number: '1.2-2' }}</p>
+    <p class="brand" *ngIf="product.productType">{{ product.productType }}</p>
+    <h3 class="name">{{ product.name }}</h3>
+    <p class="price">Bs. {{ product.price | number: '1.2-2' }}</p>
     <ion-button
       expand="block"
       fill="solid"

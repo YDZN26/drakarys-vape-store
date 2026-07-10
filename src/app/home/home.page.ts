@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, switchMap } from 'rxjs';
-import { CatalogItem } from '../core/models/catalog-item.model';
+import { Product } from '../core/models/product.model';
 import { ProductService } from '../catalog/services/product.service';
 import { SortOption } from '../core/models/sort-option.model';
 
@@ -12,9 +12,9 @@ import { SortOption } from '../core/models/sort-option.model';
   standalone: false,
 })
 export class HomePage implements OnInit {
-  selectedCategory = 'ALL';
-  private selectedCategory$ = new BehaviorSubject<string>('ALL');
-  filteredProducts$!: Observable<CatalogItem[]>;
+  selectedCategory: number | 'ALL' = 'ALL';
+  private selectedCategory$ = new BehaviorSubject<number | 'ALL'>('ALL');
+  filteredProducts$!: Observable<Product[]>;
 
   constructor(
     private productService: ProductService,
@@ -23,9 +23,9 @@ export class HomePage implements OnInit {
 
   ngOnInit(): void {
     this.filteredProducts$ = this.selectedCategory$.pipe(
-      switchMap(cat =>
+      switchMap(categoryId =>
         this.productService.getProducts(
-          cat === 'ALL' ? {} : { categoryName: cat },
+          categoryId === 'ALL' ? {} : { categoryId },
           SortOption.Relevance,
           0,
           20
@@ -35,20 +35,20 @@ export class HomePage implements OnInit {
   }
 
   onCategoryChange(event: any): void {
-    const val = event.detail.value as string;
+    const val = event.detail.value as number | 'ALL';
     this.selectedCategory = val;
     this.selectedCategory$.next(val);
   }
 
-  goToCategory(categoryName: string): void {
-    this.router.navigate(['/catalog'], { queryParams: { categoryName } });
+  goToCategory(categoryId: number): void {
+    this.router.navigate(['/catalog'], { queryParams: { categoryId } });
   }
 
   goToCatalog(): void {
     this.router.navigate(['/catalog']);
   }
 
-  goToProduct(productId: string): void {
+  goToProduct(productId: number): void {
     this.router.navigate(['/product', productId]);
   }
 }

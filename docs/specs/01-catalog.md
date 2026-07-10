@@ -15,9 +15,9 @@ Allow any visitor to browse, search, and filter the store's product catalog with
 | I-03 | Open the app | The visitor lands on the home screen after age is verified |
 | I-04 | Select a category | Taps one of the main categories: Disposables, Pods, Liquids, Accessories, Other |
 | I-05 | Type in the search bar | Free-text entry; searches by product name and brand |
-| I-06 | Apply type filter | Single-select; narrows results by product type |
-| I-07 | Apply flavor filter | Multi-select; narrows results by one or more available flavors (e.g. mint, fruit, tobacco) |
-| I-08 | Apply nicotine filter | Selects one or more nicotine levels: 0 mg, 3 mg, 6 mg, 12 mg, 20 mg, 50 mg |
+| I-06 | Apply type filter | Single-select; narrows results by the `product_type` column (e.g. disposable, pod, liquid, accessory) |
+| I-07 | Apply flavor filter | Multi-select; narrows results by the `flavor` column (structured free text); may be unpopulated for legacy products |
+| I-08 | Apply nicotine filter | Selects one or more nicotine levels via the `nicotine_mg` column: 0 mg, 3 mg, 6 mg, 12 mg, 20 mg, 50 mg |
 | I-09 | Apply price filter | Sets a minimum and maximum price range using a slider |
 | I-10 | Change sort order | Selects one of: Relevance, Price low–high, Price high–low, Newest first |
 | I-11 | Clear a filter | Removes a single active filter or clears all at once |
@@ -69,3 +69,4 @@ Allow any visitor to browse, search, and filter the store's product catalog with
 - Filters accumulate (each new filter further narrows results); clearing a filter expands results again.
 - Out-of-stock products remain visible in the catalog unless the admin explicitly deactivates them.
 - The "Drakarys Exclusive" badge is set per product by the admin and reflects products manufactured or distributed exclusively by the store.
+- `flavor`, `nicotine_mg`, and `product_type` are optional (nullable) fields added via an additive migration over existing data; products without these fields populated will not appear under those specific filters until updated by the admin (Spec 06).
