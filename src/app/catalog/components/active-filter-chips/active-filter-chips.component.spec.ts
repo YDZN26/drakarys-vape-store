@@ -28,12 +28,12 @@ describe('ActiveFilterChipsComponent', () => {
   });
 
   it('hasFilters is true when a filter is set', () => {
-    component.filters = { categoryId: 'cat1' };
+    component.filters = { categoryId: 1 };
     expect(component.hasFilters).toBeTrue();
   });
 
   it('builds a chip for categoryId', () => {
-    component.filters = { categoryId: 'cat1' };
+    component.filters = { categoryId: 1 };
     expect(component.activeFilters.find(f => f.key === 'categoryId')).toBeTruthy();
   });
 
@@ -53,8 +53,8 @@ describe('ActiveFilterChipsComponent', () => {
 
   it('emits removeFilter when remove() is called', () => {
     spyOn(component.removeFilter, 'emit');
-    component.remove('type');
-    expect(component.removeFilter.emit).toHaveBeenCalledWith('type');
+    component.remove('productType');
+    expect(component.removeFilter.emit).toHaveBeenCalledWith('productType');
   });
 
   it('emits both minPrice and maxPrice when removing price range', () => {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AgeVerificationService } from '../age-verification.service';
+import { WindowRef } from '../../window/window-ref.service';
 
 @Component({
   selector: 'app-age-verification-modal',
@@ -11,7 +12,8 @@ import { AgeVerificationService } from '../age-verification.service';
 export class AgeVerificationModalComponent {
   constructor(
     private modalCtrl: ModalController,
-    private ageService: AgeVerificationService
+    private ageService: AgeVerificationService,
+    private windowRef: WindowRef
   ) {}
 
   confirm(): void {
@@ -21,6 +23,6 @@ export class AgeVerificationModalComponent {
 
   decline(): void {
     this.ageService.declineAge();
-    window.location.href = 'https://www.google.com';
+    this.windowRef.nativeWindow.location.href = 'https://www.google.com';
   }
 }

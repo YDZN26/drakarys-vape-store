@@ -2,26 +2,23 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { ProductCardComponent } from './product-card.component';
 import { Product } from '../../../core/models/product.model';
-import { ProductVariant } from '../../../core/models/product-variant.model';
 import { StockStatus } from '../../../core/models/stock-status.model';
 
 const MOCK_PRODUCT: Product = {
-  id: 'p1',
-  categoryId: 'cat1',
+  id: 1,
+  categoryId: 1,
   name: 'Test Vape',
-  brand: 'BrandX',
   description: 'A test vape',
-  basePrice: 25,
-  images: ['https://example.com/img.jpg'],
-  status: 'active',
-  type: 'Disposable',
+  price: 25,
+  stock: 10,
+  isActive: true,
+  imageUrl: 'https://example.com/img.jpg',
+  images: [],
+  flavor: 'Mint',
+  nicotineMg: 20,
+  productType: 'disposable',
   featured: false,
-  createdAt: '2024-01-01',
 };
-
-function makeVariant(stock: number): ProductVariant {
-  return { id: 'v1', productId: 'p1', flavor: 'Mint', nicotineMg: 20, sizeMl: 2, priceOverride: null, stock, sku: 'SKU1' };
-}
 
 describe('ProductCardComponent', () => {
   let component: ProductCardComponent;
@@ -44,36 +41,31 @@ describe('ProductCardComponent', () => {
   });
 
   it('shows Available status when stock is high', () => {
-    component.variants = [makeVariant(10)];
+    component.product = { ...MOCK_PRODUCT, stock: 10 };
     expect(component.stockStatus).toBe(StockStatus.Available);
     expect(component.stockBadgeColor).toBe('success');
   });
 
-  it('shows LowStock when total stock is <= 5', () => {
-    component.variants = [makeVariant(2), makeVariant(2)];
+  it('shows LowStock when stock is at or below the threshold', () => {
+    component.product = { ...MOCK_PRODUCT, stock: 4 };
     expect(component.stockStatus).toBe(StockStatus.LowStock);
     expect(component.stockBadgeColor).toBe('warning');
   });
 
-  it('shows OutOfStock when total stock is 0', () => {
-    component.variants = [makeVariant(0)];
+  it('shows OutOfStock when stock is 0', () => {
+    component.product = { ...MOCK_PRODUCT, stock: 0 };
     expect(component.stockStatus).toBe(StockStatus.OutOfStock);
     expect(component.stockBadgeColor).toBe('danger');
-  });
-
-  it('defaults to Available when no variants provided', () => {
-    component.variants = [];
-    expect(component.stockStatus).toBe(StockStatus.Available);
   });
 
   it('emits productTap with product id on tap()', () => {
     spyOn(component.productTap, 'emit');
     component.tap();
-    expect(component.productTap.emit).toHaveBeenCalledWith('p1');
+    expect(component.productTap.emit).toHaveBeenCalledWith(1);
   });
 
-  it('falls back to default image when images array is empty', () => {
-    component.product = { ...MOCK_PRODUCT, images: [] };
+  it('falls back to default image when imageUrl is null', () => {
+    component.product = { ...MOCK_PRODUCT, imageUrl: null };
     expect(component.mainImage).toBe('assets/icon/favicon.png');
   });
 });

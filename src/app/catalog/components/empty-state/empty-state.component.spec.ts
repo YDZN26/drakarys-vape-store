@@ -4,7 +4,7 @@ import { EmptyStateComponent } from './empty-state.component';
 import { Category } from '../../../core/models/category.model';
 
 const MOCK_CATEGORIES: Category[] = [
-  { id: 'c1', name: 'Disposables', slug: 'disposables', imageUrl: '' },
+  { id: 1, name: 'Disposables' },
 ];
 
 describe('EmptyStateComponent', () => {
@@ -34,8 +34,8 @@ describe('EmptyStateComponent', () => {
 
   it('emits categorySelect with the category id', () => {
     spyOn(component.categorySelect, 'emit');
-    component.onCategorySelect('c1');
-    expect(component.categorySelect.emit).toHaveBeenCalledWith('c1');
+    component.onCategorySelect(1);
+    expect(component.categorySelect.emit).toHaveBeenCalledWith(1);
   });
 
   it('renders category chips when categories are provided', () => {

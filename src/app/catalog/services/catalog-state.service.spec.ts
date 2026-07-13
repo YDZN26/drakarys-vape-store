@@ -6,7 +6,7 @@ import { ProductService } from './product.service';
 import { SortOption } from '../../core/models/sort-option.model';
 import { Product } from '../../core/models/product.model';
 
-const MOCK_PRODUCT: Partial<Product> = { id: 'p1', name: 'Test Vape' };
+const MOCK_PRODUCT: Partial<Product> = { id: 1, name: 'Test Vape' };
 
 describe('CatalogStateService', () => {
   let service: CatalogStateService;
@@ -22,16 +22,21 @@ describe('CatalogStateService', () => {
         { provide: ProductService, useValue: productServiceSpy },
       ],
     });
-
-    service = TestBed.inject(CatalogStateService);
   });
 
+  // CatalogStateService's constructor subscribes to a debounceTime(300)
+  // pipeline. That timer must be scheduled inside the same fakeAsync zone
+  // that later calls tick(), or tick() has nothing to advance -- so
+  // TestBed.inject() (which runs the constructor) happens inside each
+  // fakeAsync test instead of a plain beforeEach.
   it('fires initial product query on construction', fakeAsync(() => {
+    service = TestBed.inject(CatalogStateService);
     tick(400);
     expect(productServiceSpy.getProducts).toHaveBeenCalledTimes(1);
   }));
 
   it('re-queries when sort changes', fakeAsync(() => {
+    service = TestBed.inject(CatalogStateService);
     tick(400);
     service.setSort(SortOption.PriceLowToHigh);
     tick(400);
@@ -39,6 +44,7 @@ describe('CatalogStateService', () => {
   }));
 
   it('debounces search input', fakeAsync(() => {
+    service = TestBed.inject(CatalogStateService);
     tick(400);
     service.setSearch('a');
     service.setSearch('ab');
@@ -48,18 +54,20 @@ describe('CatalogStateService', () => {
   }));
 
   it('clearFilters resets filter state', fakeAsync(() => {
+    service = TestBed.inject(CatalogStateService);
     tick(400);
-    service.setFilters({ categoryId: 'cat1' });
+    service.setFilters({ categoryId: 1 });
     service.clearFilters();
     tick(400);
     expect(service.currentFilters).toEqual({});
   }));
 
   it('removeFilter deletes specific key', fakeAsync(() => {
+    service = TestBed.inject(CatalogStateService);
     tick(400);
-    service.setFilters({ categoryId: 'cat1', type: 'Disposable' });
-    service.removeFilter('type');
-    expect(service.currentFilters['type']).toBeUndefined();
-    expect(service.currentFilters['categoryId']).toBe('cat1');
+    service.setFilters({ categoryId: 1, productType: 'disposable' });
+    service.removeFilter('productType');
+    expect(service.currentFilters.productType).toBeUndefined();
+    expect(service.currentFilters.categoryId).toBe(1);
   }));
 });

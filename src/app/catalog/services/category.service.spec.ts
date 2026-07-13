@@ -4,9 +4,16 @@ import { CategoryService } from './category.service';
 import { SupabaseService } from '../../core/supabase/supabase.service';
 import { Category } from '../../core/models/category.model';
 
+// Raw rows as Supabase actually returns them for .select('categoria_id, nombre')
+const MOCK_CATEGORY_ROWS = [
+  { categoria_id: 1, nombre: 'Disposables' },
+  { categoria_id: 2, nombre: 'Pods' },
+];
+
+// Expected output after CategoryService maps categoria_id/nombre -> id/name
 const MOCK_CATEGORIES: Category[] = [
-  { id: '1', name: 'Disposables', slug: 'disposables', imageUrl: '' },
-  { id: '2', name: 'Pods', slug: 'pods', imageUrl: '' },
+  { id: 1, name: 'Disposables' },
+  { id: 2, name: 'Pods' },
 ];
 
 describe('CategoryService', () => {
@@ -16,7 +23,7 @@ describe('CategoryService', () => {
     const mockClient = {
       from: () => ({
         select: () => ({
-          order: () => Promise.resolve({ data: MOCK_CATEGORIES, error: null }),
+          order: () => Promise.resolve({ data: MOCK_CATEGORY_ROWS, error: null }),
         }),
       }),
     };
@@ -31,7 +38,7 @@ describe('CategoryService', () => {
     service = TestBed.inject(CategoryService);
   });
 
-  it('returns categories from Supabase', async () => {
+  it('returns categories mapped from Supabase rows', async () => {
     const categories = await firstValueFrom(service.getCategories());
     expect(categories).toEqual(MOCK_CATEGORIES);
   });
