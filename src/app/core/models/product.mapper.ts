@@ -8,7 +8,7 @@ export function mapToProduct(row: any): Product {
     description: row.descripcion ?? null,
     price: row.precio,
     stock: row.stock,
-    isActive: row.estado !== 'inactive',
+    isActive: row.estado === true,
     imageUrl: row.imagen ?? null,
     images: row.images ?? [],
     flavor: row.flavor ?? null,
