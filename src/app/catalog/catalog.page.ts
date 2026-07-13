@@ -88,8 +88,6 @@ export class CatalogPage implements OnInit, OnDestroy {
     const modal = await this.modalCtrl.create({
       component: FilterPanelComponent,
       componentProps: { currentFilters: this.catalogState.currentFilters },
-      breakpoints: [0, 0.75, 1],
-      initialBreakpoint: 0.75,
     });
     await modal.present();
     const { data } = await modal.onDidDismiss<ProductFilters | null>();

@@ -26,10 +26,10 @@ export class CartService {
     const updated = existing
       ? items.map(item =>
           item.product.id === product.id
-            ? { ...item, quantity: item.quantity + quantity }
+            ? { ...item, quantity: Math.min(item.quantity + quantity, product.stock) }
             : item
         )
-      : [...items, { product, quantity }];
+      : [...items, { product, quantity: Math.min(quantity, product.stock) }];
 
     this.setItems(updated);
   }
@@ -44,9 +44,12 @@ export class CartService {
       return;
     }
 
+    const item = this.itemsSubject.value.find(i => i.product.id === productId);
+    const cappedQuantity = item ? Math.min(quantity, item.product.stock) : quantity;
+
     this.setItems(
-      this.itemsSubject.value.map(item =>
-        item.product.id === productId ? { ...item, quantity } : item
+      this.itemsSubject.value.map(i =>
+        i.product.id === productId ? { ...i, quantity: cappedQuantity } : i
       )
     );
   }
