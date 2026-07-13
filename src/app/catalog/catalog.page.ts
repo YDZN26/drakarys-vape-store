@@ -9,6 +9,7 @@ import { SortOption } from '../core/models/sort-option.model';
 import { CategoryService } from './services/category.service';
 import { CatalogStateService } from './services/catalog-state.service';
 import { FilterPanelComponent } from './components/filter-panel/filter-panel.component';
+import { CartService } from '../core/cart/cart.service';
 
 @Component({
   selector: 'app-catalog',
@@ -22,6 +23,7 @@ export class CatalogPage implements OnInit, OnDestroy {
   hasMore$!: Observable<boolean>;
   filters$!: Observable<ProductFilters>;
   sort$!: Observable<SortOption>;
+  readonly cartItemCount$: Observable<number> = this.cartService.totalItemCount$;
 
   categories: Category[] = [];
 
@@ -30,6 +32,7 @@ export class CatalogPage implements OnInit, OnDestroy {
   constructor(
     private catalogState: CatalogStateService,
     private categoryService: CategoryService,
+    private cartService: CartService,
     private modalCtrl: ModalController,
     private router: Router,
     private route: ActivatedRoute
@@ -105,6 +108,10 @@ export class CatalogPage implements OnInit, OnDestroy {
 
   onProductTap(productId: number): void {
     this.router.navigate(['/product', productId]);
+  }
+
+  goToCart(): void {
+    this.router.navigate(['/cart']);
   }
 
   async onLoadMore(ev: InfiniteScrollCustomEvent): Promise<void> {

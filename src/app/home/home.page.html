@@ -7,6 +7,13 @@
       <ion-button (click)="goToCatalog()" class="toolbar-btn">
         <ion-icon slot="icon-only" name="grid-outline"></ion-icon>
       </ion-button>
+      <ion-button (click)="goToCart()" class="toolbar-btn cart-btn">
+        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+        <ion-badge
+          *ngIf="(cartItemCount$ | async) as count"
+          class="cart-badge"
+        >{{ count }}</ion-badge>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

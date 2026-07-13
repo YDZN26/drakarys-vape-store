@@ -57,6 +57,26 @@ ion-button {
   letter-spacing: 0.02em;
 }
 
+// ── Cart icon badge (toolbar buttons) ──────────────────────────────────────
+
+.cart-btn {
+  position: relative;
+
+  .cart-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    --background: #4d7bff;
+    --color: #ffffff;
+    font-size: 0.625rem;
+    font-weight: 700;
+    min-width: 1.1rem;
+    height: 1.1rem;
+    padding: 0 4px;
+    border-radius: 999px;
+  }
+}
+
 // ── Age-gate modal: centered floating dialog ──────────────────────────────
 // IMPORTANT: --height must be a concrete px value. "auto" collapses the
 // modal wrapper to 0 because ion-content's internal scroller cannot expand

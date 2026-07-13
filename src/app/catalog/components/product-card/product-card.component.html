@@ -26,5 +26,16 @@
     >
       Ver Detalles
     </ion-button>
+    <ion-button
+      expand="block"
+      fill="outline"
+      size="small"
+      class="add-to-cart-btn"
+      [disabled]="stockStatus === 'out_of_stock'"
+      (click)="addToCart($event)"
+    >
+      <ion-icon slot="start" name="cart-outline"></ion-icon>
+      Agregar al carrito
+    </ion-button>
   </ion-card-content>
 </ion-card>

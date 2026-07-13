@@ -122,3 +122,14 @@ ion-card-content {
   letter-spacing: 0.02em;
   margin: 0;
 }
+
+// ── Add to cart button ──────────────────────────────────────────────────────
+
+.add-to-cart-btn {
+  --border-radius: 10px;
+  --border-color: #4d7bff;
+  --color: #4d7bff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0;
+}

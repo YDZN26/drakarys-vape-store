@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const supabaseUrl = process.env['SUPABASE_URL'] || '';
 const supabaseAnonKey = process.env['SUPABASE_ANON_KEY'] || '';
+const whatsappNumber = process.env['WHATSAPP_NUMBER'] || '';
 
 if (!supabaseUrl || !supabaseAnonKey) {
   console.warn(
@@ -12,10 +13,18 @@ if (!supabaseUrl || !supabaseAnonKey) {
   );
 }
 
+if (!whatsappNumber) {
+  console.warn(
+    '\n[generate-env] WARNING: missing WHATSAPP_NUMBER in .env. ' +
+    'Generated environment files will have an empty WhatsApp number.\n'
+  );
+}
+
 const buildFile = (production) => `export const environment = {
   production: ${production},
   supabaseUrl: '${supabaseUrl}',
-  supabaseAnonKey: '${supabaseAnonKey}'
+  supabaseAnonKey: '${supabaseAnonKey}',
+  whatsappNumber: '${whatsappNumber}'
 };
 `;
 

@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { Product } from '../core/models/product.model';
 import { ProductService } from '../catalog/services/product.service';
 import { SortOption } from '../core/models/sort-option.model';
+import { CartService } from '../core/cart/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +16,11 @@ export class HomePage implements OnInit {
   selectedCategory: number | 'ALL' = 'ALL';
   private selectedCategory$ = new BehaviorSubject<number | 'ALL'>('ALL');
   filteredProducts$!: Observable<Product[]>;
+  readonly cartItemCount$: Observable<number> = this.cartService.totalItemCount$;
 
   constructor(
     private productService: ProductService,
+    private cartService: CartService,
     private router: Router
   ) {}
 
@@ -46,6 +49,10 @@ export class HomePage implements OnInit {
 
   goToCatalog(): void {
     this.router.navigate(['/catalog']);
+  }
+
+  goToCart(): void {
+    this.router.navigate(['/cart']);
   }
 
   goToProduct(productId: number): void {
