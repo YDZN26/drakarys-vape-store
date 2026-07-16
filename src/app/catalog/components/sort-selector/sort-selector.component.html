@@ -1,0 +1,11 @@
+<ion-select
+  [value]="value"
+  placeholder="Sort by"
+  interface="popover"
+  (ionChange)="onChange($event)"
+  class="sort-select"
+>
+  <ion-select-option *ngFor="let opt of options" [value]="opt.value">
+    {{ opt.label }}
+  </ion-select-option>
+</ion-select>

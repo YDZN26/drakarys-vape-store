@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="cart-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/catalog" class="cart-back-btn"></ion-back-button>
+    </ion-buttons>
+    <ion-title><span class="toolbar-brand">Mi Carrito</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="cart-content">
+  <ng-container *ngIf="(items$ | async) as items">
+    <div class="empty-cart" *ngIf="items.length === 0">
+      <ion-icon name="cart-outline" class="empty-icon"></ion-icon>
+      <p>Tu carrito está vacío</p>
+      <ion-button fill="outline" (click)="goToCatalog()">
+        Volver al catálogo
+      </ion-button>
+    </div>
+
+    <ion-list class="cart-list" *ngIf="items.length > 0" lines="none">
+      <ion-item *ngFor="let item of items" class="cart-item">
+        <ion-thumbnail slot="start">
+          <img [src]="mainImage(item)" [alt]="item.product.name" />
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{ item.product.name }}</h3>
+          <p>Bs. {{ item.product.price | number: '1.2-2' }} c/u</p>
+          <div class="qty-controls">
+            <ion-button fill="clear" size="small" class="qty-btn" (click)="decrease(item)">
+              <ion-icon slot="icon-only" name="remove-circle-outline"></ion-icon>
+            </ion-button>
+            <span class="qty-value">{{ item.quantity }}</span>
+            <ion-button fill="clear" size="small" class="qty-btn" (click)="increase(item)">
+              <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-label>
+        <div slot="end" class="item-end">
+          <p class="line-subtotal">Bs. {{ lineSubtotal(item) | number: '1.2-2' }}</p>
+          <ion-button
+            fill="clear"
+            color="danger"
+            size="small"
+            class="remove-btn"
+            (click)="removeItem(item.product.id)"
+          >
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <div class="cart-summary">
+      <div class="total-row">
+        <span>Total</span>
+        <span class="total-value">Bs. {{ (totalPrice$ | async) | number: '1.2-2' }}</span>
+      </div>
+      <ion-button
+        expand="block"
+        class="whatsapp-btn"
+        [disabled]="items.length === 0"
+        (click)="sendWhatsAppOrder()"
+      >
+        <ion-icon slot="start" name="logo-whatsapp"></ion-icon>
+        Enviar pedido por WhatsApp
+      </ion-button>
+    </div>
+  </ng-container>
+</ion-content>

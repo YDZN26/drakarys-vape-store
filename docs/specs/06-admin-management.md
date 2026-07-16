@@ -1,5 +1,9 @@
 # Spec 06 — Admin Management
 
+> **DIFERIDO — fuera de alcance del lanzamiento v1.** Sin checkout de pago real ni pedidos con estados (Spec 04) en la web, y con la gestión de catálogo/inventario resuelta exclusivamente por la aplicación interna existente, este panel de administración web no tiene función en la v1 actual. Se conserva como referencia para una fase futura.
+>
+> Nota: el contenido detallado de este documento (inputs, outputs, reglas de negocio) aún puede referenciar conceptos ya descartados en specs activos (variantes de producto, checkout de pago, cuentas de cliente sincronizadas). Debe revisarse y actualizarse en conjunto al momento de reactivar este spec, no antes.
+
 ## Purpose
 
 Give the store administrator a dedicated panel to manage the product catalog, monitor and adjust inventory levels, configure store settings, and move orders through their lifecycle. All actions in this area are restricted to accounts with the Administrator role.

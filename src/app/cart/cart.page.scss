@@ -1,0 +1,158 @@
+ion-content.cart-content {
+  --background: #0d0d14;
+}
+
+// ── Toolbar ──────────────────────────────────────────────────────────────────
+
+.cart-toolbar {
+  --background: rgba(13, 13, 20, 0.97);
+  --color: #ffffff;
+  --border-color: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+
+  .toolbar-brand {
+    font-size: 1.0625rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+  }
+
+  .cart-back-btn {
+    --color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+// ── Empty state ────────────────────────────────────────────────────────────────
+
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 4rem 1.5rem;
+  text-align: center;
+
+  .empty-icon {
+    font-size: 3.5rem;
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+  }
+}
+
+// ── Item list ────────────────────────────────────────────────────────────────
+
+.cart-list {
+  background: transparent;
+  padding: 0.5rem 0.5rem 0;
+}
+
+.cart-item {
+  --background: #1a1a27;
+  --border-radius: 14px;
+  margin-bottom: 0.625rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+
+  ion-thumbnail {
+    --border-radius: 10px;
+    background: #111120;
+
+    img {
+      object-fit: contain;
+      padding: 4px;
+    }
+  }
+
+  h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #dde2f0;
+    margin: 0 0 0.25rem;
+  }
+
+  p {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0 0 0.375rem;
+  }
+
+  .qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    .qty-btn {
+      --color: #4d7bff;
+      margin: 0;
+      height: 1.75rem;
+    }
+
+    .qty-value {
+      min-width: 1.5rem;
+      text-align: center;
+      font-weight: 700;
+      color: #dde2f0;
+    }
+  }
+
+  .item-end {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+
+    .line-subtotal {
+      font-size: 0.875rem;
+      font-weight: 800;
+      color: #4d7bff;
+      margin: 0;
+    }
+
+    .remove-btn {
+      margin: 0;
+    }
+  }
+}
+
+// ── Summary / WhatsApp CTA ──────────────────────────────────────────────────────
+
+.cart-summary {
+  position: sticky;
+  bottom: 0;
+  padding: 0.875rem 1rem calc(0.875rem + env(safe-area-inset-bottom));
+  background: rgba(13, 13, 20, 0.97);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+
+    .total-value {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+  }
+
+  .whatsapp-btn {
+    --background: #25d366;
+    --background-activated: #1ebe5b;
+    --background-focused: #1ebe5b;
+    --color: #ffffff;
+    --border-radius: 10px;
+    font-weight: 700;
+  }
+}

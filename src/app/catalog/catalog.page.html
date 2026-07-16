@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="catalog-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" class="catalog-back-btn"></ion-back-button>
+    </ion-buttons>
+    <ion-title><span class="toolbar-brand">Catálogo</span></ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToCart()" class="catalog-icon-btn cart-btn">
+        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+        <ion-badge
+          *ngIf="(cartItemCount$ | async) as count"
+          class="cart-badge"
+        >{{ count }}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="catalog-content">
+  <app-store-closed-banner></app-store-closed-banner>
+
+  <app-search-bar (searchChange)="onSearchChange($event)"></app-search-bar>
+
+  <app-category-list
+    [categories]="categories"
+    [activeCategoryId]="activeCategoryId"
+    (categorySelect)="onCategorySelect($event)"
+  ></app-category-list>
+
+  <div class="toolbar-row">
+    <app-sort-selector
+      [value]="currentSort"
+      (sortChange)="onSortChange($event)"
+    ></app-sort-selector>
+    <ion-button fill="clear" size="small" class="filter-btn" (click)="openFilterPanel()">
+      <ion-icon slot="start" name="funnel-outline"></ion-icon>
+      Filtros
+    </ion-button>
+  </div>
+
+  <app-active-filter-chips
+    [filters]="(filters$ | async) ?? {}"
+    [categories]="categories"
+    (removeFilter)="onRemoveFilter($event)"
+    (clearAll)="onClearFilters()"
+  ></app-active-filter-chips>
+
+  <ng-container *ngIf="(products$ | async) as products">
+    <app-product-grid
+      *ngIf="products.length > 0 || (loading$ | async)"
+      [products]="products"
+      [hasMore]="(hasMore$ | async) ?? false"
+      [loading]="(loading$ | async) ?? false"
+      (loadMore)="onLoadMore($event)"
+      (productTap)="onProductTap($event)"
+    ></app-product-grid>
+
+    <app-empty-state
+      *ngIf="products.length === 0 && !(loading$ | async)"
+      [categories]="categories"
+      (categorySelect)="onCategorySelect($event)"
+      (clearFilters)="onClearFilters()"
+    ></app-empty-state>
+  </ng-container>
+</ion-content>

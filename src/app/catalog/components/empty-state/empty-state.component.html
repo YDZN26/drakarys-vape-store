@@ -1,0 +1,24 @@
+<div class="empty-state">
+  <div class="icon-wrap">
+    <ion-icon name="search-outline"></ion-icon>
+  </div>
+
+  <h2>We couldn't find that product</h2>
+  <p>Try adjusting your search or filters, or browse a category below.</p>
+
+  <ion-button fill="outline" color="primary" (click)="onClearFilters()">
+    Clear filters
+  </ion-button>
+
+  <div class="suggestions" *ngIf="categories.length > 0">
+    <p class="suggestions-label">Browse categories:</p>
+    <div class="suggestion-chips">
+      <ion-chip
+        *ngFor="let cat of categories"
+        (click)="onCategorySelect(cat.id)"
+      >
+        {{ cat.name }}
+      </ion-chip>
+    </div>
+  </div>
+</div>
