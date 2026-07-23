@@ -67,6 +67,11 @@ ion-content.cart-content {
     img {
       object-fit: contain;
       padding: 4px;
+
+      &.placeholder-logo {
+        padding: 10px;
+        opacity: 0.35;
+      }
     }
   }
 

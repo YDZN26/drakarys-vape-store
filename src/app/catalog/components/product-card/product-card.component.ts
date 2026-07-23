@@ -40,7 +40,7 @@ export class ProductCardComponent {
   }
 
   get mainImage(): string {
-    return this.product.imageUrl ?? 'assets/icon/favicon.png';
+    return this.product.imageUrl ?? 'assets/icon/logo-head-master.png';
   }
 
   tap(): void {

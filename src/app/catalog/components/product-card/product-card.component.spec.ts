@@ -66,6 +66,6 @@ describe('ProductCardComponent', () => {
 
   it('falls back to default image when imageUrl is null', () => {
     component.product = { ...MOCK_PRODUCT, imageUrl: null };
-    expect(component.mainImage).toBe('assets/icon/favicon.png');
+    expect(component.mainImage).toBe('assets/icon/logo-head-master.png');
   });
 });

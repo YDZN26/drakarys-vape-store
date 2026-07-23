@@ -52,7 +52,11 @@ export class CartPage {
   }
 
   mainImage(item: CartItem): string {
-    return item.product.imageUrl ?? 'assets/icon/favicon.png';
+    return item.product.imageUrl ?? 'assets/icon/logo-head-master.png';
+  }
+
+  isPlaceholderImage(item: CartItem): boolean {
+    return !item.product.imageUrl;
   }
 
   lineSubtotal(item: CartItem): number {
