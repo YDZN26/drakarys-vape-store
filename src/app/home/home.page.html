@@ -21,49 +21,19 @@
 <ion-content [fullscreen]="true" class="home-content">
 
   <!-- ════════════════════════════════════════════════════════════════════════
-       HERO SLIDER
+       HERO BANNER
        ════════════════════════════════════════════════════════════════════════ -->
   <section class="hero-section">
-    <swiper-container
-      slides-per-view="1"
-      loop="true"
-      autoplay-delay="4500"
-      autoplay-disable-on-interaction="false"
-      pagination="true"
-      class="hero-swiper"
-    >
-      <swiper-slide class="hero-slide slide-1">
-        <div class="slide-content">
-          <span class="slide-tag">NUEVO · 2025</span>
-          <h1 class="slide-title">Drag X Pro</h1>
-          <p class="slide-subtitle">Pod mod de alto rendimiento con pantalla OLED</p>
-          <ion-button fill="solid" color="light" class="slide-cta" (click)="goToCatalog()">
-            Explorar
-            <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
-          </ion-button>
-        </div>
-      </swiper-slide>
-
-      <swiper-slide class="hero-slide slide-2">
-        <div class="slide-content">
-          <span class="slide-tag">TOP VENTAS</span>
-          <h1 class="slide-title">Elf Bar BC5000</h1>
-          <p class="slide-subtitle">Desechable recargable · 5 000 puffs · múltiples sabores</p>
-          <ion-button fill="solid" color="light" class="slide-cta" (click)="goToCatalog()">
-            Comprar
-            <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
-          </ion-button>
-        </div>
-      </swiper-slide>
-
-      <swiper-slide class="hero-slide slide-3">
-        <div class="slide-content">
-          <span class="slide-tag">OFERTA ESPECIAL</span>
-          <h1 class="slide-title">Sales de Nicotina</h1>
-          <p class="slide-subtitle">Sabores premium desde Bs. 179 · 30 ml</p>
-        </div>
-      </swiper-slide>
-    </swiper-container>
+    <a (click)="goToCatalog()" class="hero-banner-link" role="button" aria-label="Ver catálogo completo">
+      <picture>
+        <source media="(min-width: 768px)" srcset="assets/images/hero-banner-desktop.png">
+        <img src="assets/images/hero-banner-mobile.png" alt="Drakarys Vape Store" class="hero-banner-img">
+      </picture>
+      <span class="hero-banner-cta">
+        Ver más
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </span>
+    </a>
   </section>
 
   <!-- ════════════════════════════════════════════════════════════════════════
@@ -204,27 +174,47 @@
       <div class="footer-col">
         <h4>Contáctanos</h4>
         <div class="footer-social">
-          <a class="social-icon" title="Instagram">
+          <a
+            class="social-icon"
+            title="Instagram"
+            href="https://www.instagram.com/drakarysvapestor/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <ion-icon name="logo-instagram"></ion-icon>
           </a>
-          <a class="social-icon" title="Facebook">
+          <a
+            class="social-icon"
+            title="Facebook"
+            href="https://www.facebook.com/DrakarysVapeNation?locale=es_LA"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <ion-icon name="logo-facebook"></ion-icon>
           </a>
-          <a class="social-icon" title="WhatsApp">
+          <a
+            class="social-icon"
+            title="WhatsApp"
+            [href]="whatsappUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <ion-icon name="logo-whatsapp"></ion-icon>
           </a>
-          <a class="social-icon" title="TikTok">
-            <ion-icon name="musical-notes-outline"></ion-icon>
-          </a>
         </div>
-        <p class="footer-contact">
+        <a
+          class="footer-contact"
+          href="https://maps.app.goo.gl/AQzpWVRusrSfbKQf7"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <ion-icon name="location-outline"></ion-icon>
-          La Paz, Bolivia
-        </p>
-        <p class="footer-contact">
+          Sucre, Bolivia
+        </a>
+        <a class="footer-contact" [href]="phoneHref">
           <ion-icon name="call-outline"></ion-icon>
-          +591 XXX-XXXX
-        </p>
+          {{ formattedPhone }}
+        </a>
       </div>
 
     </div>
