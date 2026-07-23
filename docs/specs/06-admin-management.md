@@ -1,8 +1,8 @@
 # Spec 06 — Admin Management
 
-> **DIFERIDO — fuera de alcance del lanzamiento v1.** Sin checkout de pago real ni pedidos con estados (Spec 04) en la web, y con la gestión de catálogo/inventario resuelta exclusivamente por la aplicación interna existente, este panel de administración web no tiene función en la v1 actual. Se conserva como referencia para una fase futura.
+> **DEFERRED — out of scope for the v1 launch.** Without a real payment checkout or orders with statuses (Spec 04) on the web, and with catalog/inventory management handled exclusively by the existing internal application, this web admin panel has no function in the current v1. It is kept as a reference for a future phase.
 >
-> Nota: el contenido detallado de este documento (inputs, outputs, reglas de negocio) aún puede referenciar conceptos ya descartados en specs activos (variantes de producto, checkout de pago, cuentas de cliente sincronizadas). Debe revisarse y actualizarse en conjunto al momento de reactivar este spec, no antes.
+> Note: the detailed content of this document (inputs, outputs, business rules) may still reference concepts already discarded in active specs (product variants, payment checkout, synced customer accounts). It must be reviewed and updated together when this spec is reactivated, not before.
 
 ## Purpose
 

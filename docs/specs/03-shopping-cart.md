@@ -49,4 +49,4 @@ Give the customer a persistent, accurate summary of the items they intend to buy
 - The grand total reflects only product prices; shipping and discounts are calculated at checkout.
 - A removal confirmation prompt is only shown when the line subtotal of the item exceeds a threshold defined by the store admin.
 - Tapping "Enviar pedido por WhatsApp" with an empty cart redirects the customer to the catalog instead of opening WhatsApp.
-- El mensaje de WhatsApp incluye únicamente nombre de producto y cantidad, sin precios ni totales — el precio final se confirma manualmente entre el cliente y el negocio.
+- The WhatsApp message includes only product name and quantity, with no prices or totals — the final price is confirmed manually between the customer and the business.

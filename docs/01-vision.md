@@ -28,7 +28,7 @@
 - Age verification gate on first visit (legal requirement).
 - Store hours banner (informational, does not block browsing).
 
-### Fuera de alcance de v1 (planeado a futuro)
+### Deferred to a future phase
 
 - Customer authentication (registration, login, session management).
 - Complete checkout flow with real online payment.

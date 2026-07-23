@@ -35,6 +35,8 @@ const targets = [
 
 const environmentsDir = path.join(__dirname, '..', 'src', 'environments');
 
+fs.mkdirSync(environmentsDir, { recursive: true });
+
 for (const { file, production } of targets) {
   const filePath = path.join(environmentsDir, file);
   fs.writeFileSync(filePath, buildFile(production));
