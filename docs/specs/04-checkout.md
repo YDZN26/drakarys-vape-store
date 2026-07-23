@@ -1,8 +1,8 @@
 # Spec 04 — Checkout
 
-> **DIFERIDO — fuera de alcance del lanzamiento v1.** El flujo de compra de la v1 usa un botón de WhatsApp desde el carrito (ver Spec 03), no el checkout completo descrito en este documento. Este spec se conserva como referencia para una fase futura, no debe implementarse todavía.
+> **DEFERRED — out of scope for the v1 launch.** The v1 purchase flow uses a WhatsApp button from the cart (see Spec 03), not the full checkout described in this document. This spec is kept as a reference for a future phase and should not be implemented yet.
 >
-> Nota: el contenido detallado de este documento (inputs, outputs, reglas de negocio) aún puede referenciar conceptos ya descartados en specs activos (variantes de producto, checkout de pago, cuentas de cliente sincronizadas). Debe revisarse y actualizarse en conjunto al momento de reactivar este spec, no antes.
+> Note: the detailed content of this document (inputs, outputs, business rules) may still reference concepts already discarded in active specs (product variants, payment checkout, synced customer accounts). It must be reviewed and updated together when this spec is reactivated, not before.
 
 ## Purpose
 

@@ -1,10 +1,10 @@
 # Spec 05 — Authentication
 
-> **DIFERIDO — fuera de alcance del lanzamiento v1.** No es necesario para el flujo de carrito + WhatsApp de la v1. Este spec se conserva como referencia para una fase futura, no debe implementarse todavía.
+> **DEFERRED — out of scope for the v1 launch.** Not needed for the v1 cart + WhatsApp flow. This spec is kept as a reference for a future phase and should not be implemented yet.
 >
-> Al reactivarse este spec, Spec 03 (Shopping Cart) debe extenderse para agregar persistencia y sincronización de carrito ligada a la cuenta del cliente.
+> When this spec is reactivated, Spec 03 (Shopping Cart) must be extended to add cart persistence and synchronization tied to the customer account.
 >
-> Nota: el contenido detallado de este documento (inputs, outputs, reglas de negocio) aún puede referenciar conceptos ya descartados en specs activos (variantes de producto, checkout de pago, cuentas de cliente sincronizadas). Debe revisarse y actualizarse en conjunto al momento de reactivar este spec, no antes.
+> Note: the detailed content of this document (inputs, outputs, business rules) may still reference concepts already discarded in active specs (product variants, payment checkout, synced customer accounts). It must be reviewed and updated together when this spec is reactivated, not before.
 
 ## Purpose
 
