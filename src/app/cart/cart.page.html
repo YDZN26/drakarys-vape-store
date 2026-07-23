@@ -20,7 +20,11 @@
     <ion-list class="cart-list" *ngIf="items.length > 0" lines="none">
       <ion-item *ngFor="let item of items" class="cart-item">
         <ion-thumbnail slot="start">
-          <img [src]="mainImage(item)" [alt]="item.product.name" />
+          <img
+            [src]="mainImage(item)"
+            [alt]="item.product.name"
+            [class.placeholder-logo]="isPlaceholderImage(item)"
+          />
         </ion-thumbnail>
         <ion-label>
           <h3>{{ item.product.name }}</h3>
