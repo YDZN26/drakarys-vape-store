@@ -30,7 +30,7 @@ function makeRow(overrides: Partial<Record<string, unknown>> = {}) {
 // passes the query straight into rxjs `from(...)`.
 function createQueryBuilder(response: { data: any; error: any }) {
   const builder: any = {};
-  ['select', 'eq', 'ilike', 'gte', 'lte', 'order'].forEach(method => {
+  ['select', 'eq', 'ilike', 'or', 'gte', 'lte', 'order'].forEach(method => {
     builder[method] = jasmine.createSpy(method).and.returnValue(builder);
   });
   builder.range = jasmine.createSpy('range').and.returnValue(Promise.resolve(response));
@@ -97,6 +97,26 @@ describe('ProductService', () => {
     expect(products.every(p => p.categoryId === 1)).toBeTrue();
   });
 
+  it('getProducts combines category and search term with AND, not either/or', async () => {
+    const { supabaseClient, builder } = createMockClient({
+      data: [makeRow({ categoria_id: 1, nombre: 'Elf Bar BC5000' })],
+      error: null,
+    });
+    const scopedService = new ProductService({ client: supabaseClient } as any);
+
+    const products = await firstValueFrom(
+      scopedService.getProducts({ categoryId: 1, searchTerm: 'elf' }, SortOption.Relevance, 0)
+    );
+
+    // .eq() and .or() are both called on the same query chain -- PostgREST
+    // ANDs distinct top-level filter params by default, so this expresses
+    // categoria_id = 1 AND nombre matches, never just one of the two.
+    expect(builder.eq).toHaveBeenCalledWith('categoria_id', 1);
+    expect(builder.or).toHaveBeenCalledWith('and(nombre.ilike."%elf%")');
+    expect(products.every(p => p.categoryId === 1)).toBeTrue();
+    expect(products[0].name.toLowerCase()).toContain('elf');
+  });
+
   it('getProducts filters by search term', async () => {
     const { supabaseClient, builder } = createMockClient({
       data: [makeRow({ nombre: 'Elf Bar BC5000' })],
@@ -108,8 +128,67 @@ describe('ProductService', () => {
       scopedService.getProducts({ searchTerm: 'elf' }, SortOption.Relevance, 0)
     );
 
-    expect(builder.ilike).toHaveBeenCalledWith('nombre', '%elf%');
+    expect(builder.or).toHaveBeenCalledWith('and(nombre.ilike."%elf%")');
     expect(products[0].name.toLowerCase()).toContain('elf');
+  });
+
+  it('getProducts matches words appearing anywhere in the name, in any order', async () => {
+    // Real product: "Cartucho Life Pod Eco II 10000 Puffs (Watermelon Ice)".
+    // "life" and "10000" are not adjacent -- "Pod Eco II" sits between them.
+    const { supabaseClient, builder } = createMockClient({
+      data: [makeRow({ nombre: 'Cartucho Life Pod Eco II 10000 Puffs (Watermelon Ice)' })],
+      error: null,
+    });
+    const scopedService = new ProductService({ client: supabaseClient } as any);
+
+    const products = await firstValueFrom(
+      scopedService.getProducts({ searchTerm: 'life 10000' }, SortOption.Relevance, 0)
+    );
+
+    expect(builder.or).toHaveBeenCalledWith(
+      'and(nombre.ilike."%life%",nombre.ilike."%10000%")'
+    );
+    expect(products.length).toBe(1);
+  });
+
+  it('getProducts expands "10k" style abbreviations to the full number', async () => {
+    const { supabaseClient, builder } = createMockClient({
+      data: [makeRow({ nombre: 'Cartucho Waka Creator 10000 Puffs (Sandia)' })],
+      error: null,
+    });
+    const scopedService = new ProductService({ client: supabaseClient } as any);
+
+    await firstValueFrom(scopedService.getProducts({ searchTerm: '10k' }, SortOption.Relevance, 0));
+
+    expect(builder.or).toHaveBeenCalledWith('and(nombre.ilike."%10000%")');
+  });
+
+  it('getProducts includes the English synonym when searching a Spanish flavor', async () => {
+    const { supabaseClient, builder } = createMockClient({
+      data: [makeRow({ nombre: 'Blunt Wrap 4X (Strawberry)' })],
+      error: null,
+    });
+    const scopedService = new ProductService({ client: supabaseClient } as any);
+
+    await firstValueFrom(scopedService.getProducts({ searchTerm: 'fresa' }, SortOption.Relevance, 0));
+
+    expect(builder.or).toHaveBeenCalledWith(
+      'and(or(nombre.ilike."%fresa%",nombre.ilike."%strawberry%"))'
+    );
+  });
+
+  it('getProducts includes the English synonym when searching a Spanish color', async () => {
+    const { supabaseClient, builder } = createMockClient({
+      data: [makeRow({ nombre: 'Caliburn KOKO Prime Pod System (Black)' })],
+      error: null,
+    });
+    const scopedService = new ProductService({ client: supabaseClient } as any);
+
+    await firstValueFrom(scopedService.getProducts({ searchTerm: 'negro' }, SortOption.Relevance, 0));
+
+    expect(builder.or).toHaveBeenCalledWith(
+      'and(or(nombre.ilike."%negro%",nombre.ilike."%black%"))'
+    );
   });
 
   it('getProducts sorts price low to high', async () => {

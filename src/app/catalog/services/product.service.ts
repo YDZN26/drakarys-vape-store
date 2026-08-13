@@ -6,11 +6,59 @@ import { mapToProduct } from '../../core/models/product.mapper';
 import { ProductFilters } from '../../core/models/product-filters.model';
 import { SortOption } from '../../core/models/sort-option.model';
 import { SupabaseService } from '../../core/supabase/supabase.service';
+import { FLAVOR_SYNONYMS } from '../../core/constants/flavor-synonyms';
 
 const PRODUCT_COLUMNS =
   'producto_id, nombre, descripcion, precio, stock, estado, imagen, images, flavor, nicotine_mg, product_type, featured, categoria_id';
 
 const FEATURED_LIMIT = 8;
+
+// "10k" -> "10000". Product names always spell out the full number.
+const NUMERIC_ABBREVIATION_PATTERN = /^(\d+)k$/i;
+
+function expandNumericAbbreviation(word: string): string {
+  const match = word.match(NUMERIC_ABBREVIATION_PATTERN);
+  return match ? String(Number(match[1]) * 1000) : word;
+}
+
+function normalizeForSynonymLookup(word: string): string {
+  return word
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '');
+}
+
+// PostgREST's embedded filter syntax (used inside .or()) treats `,`, `.`,
+// `:` and `()` as structural characters. Wrapping the value in double quotes
+// preserves it as a literal, the same escaping @supabase/postgrest-js itself
+// uses for .in()/.notIn() -- this also keeps user search input from being
+// able to inject extra filter clauses.
+function escapePostgrestLiteral(value: string): string {
+  return `"${value.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
+}
+
+// Builds a PostgREST filter string equivalent to:
+//   nombre ILIKE '%word1%' (OR its synonyms) AND nombre ILIKE '%word2%' (OR its synonyms) AND ...
+// so that words can appear anywhere in the name, in any order, and each word
+// (or any of its Spanish/English synonyms) satisfies its own AND-ed clause.
+function buildNameSearchFilter(searchTerm: string): string | null {
+  const words = searchTerm.trim().split(/\s+/).filter(Boolean);
+  if (words.length === 0) return null;
+
+  const andGroups = words.map(rawWord => {
+    const expanded = expandNumericAbbreviation(rawWord);
+    const synonyms = FLAVOR_SYNONYMS[normalizeForSynonymLookup(expanded)] ?? [];
+    const alternatives = [expanded, ...synonyms];
+
+    const conditions = alternatives.map(
+      alt => `nombre.ilike.${escapePostgrestLiteral(`%${alt}%`)}`
+    );
+
+    return conditions.length > 1 ? `or(${conditions.join(',')})` : conditions[0];
+  });
+
+  return `and(${andGroups.join(',')})`;
+}
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
@@ -28,7 +76,10 @@ export class ProductService {
       query = query.eq('categoria_id', filters.categoryId);
     }
     if (filters.searchTerm) {
-      query = query.ilike('nombre', `%${filters.searchTerm}%`);
+      const nameFilter = buildNameSearchFilter(filters.searchTerm);
+      if (nameFilter) {
+        query = query.or(nameFilter);
+      }
     }
     if (filters.minPrice !== undefined) {
       query = query.gte('precio', filters.minPrice);
