@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="detail-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/catalog" class="detail-back-btn"></ion-back-button>
+    </ion-buttons>
+    <ion-title><span class="toolbar-brand">Detalle del producto</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="detail-content">
+  <div class="loading-state" *ngIf="loading">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <ng-container *ngIf="!loading">
+    <div class="product-detail" *ngIf="product as p; else notFound">
+      <div class="image-wrapper">
+        <img
+          [src]="mainImage"
+          [alt]="p.name"
+          [class.placeholder-logo]="!p.imageUrl"
+        />
+        <ion-badge [color]="stockBadgeColor" class="stock-badge">
+          {{ stockBadgeLabel }}
+        </ion-badge>
+      </div>
+
+      <div class="info">
+        <p class="brand" *ngIf="p.productType">{{ p.productType }}</p>
+        <h1 class="name">{{ p.name }}</h1>
+        <p class="price">Bs. {{ p.price | number: '1.2-2' }}</p>
+        <p class="description" *ngIf="p.description">{{ p.description }}</p>
+
+        <ion-button
+          expand="block"
+          class="add-to-cart-btn"
+          [disabled]="stockStatus === 'out_of_stock'"
+          (click)="addToCart()"
+        >
+          <ion-icon slot="start" name="cart-outline"></ion-icon>
+          Agregar al carrito
+        </ion-button>
+      </div>
+    </div>
+
+    <ng-template #notFound>
+      <div class="empty-state">
+        <ion-icon name="alert-circle-outline" class="empty-icon"></ion-icon>
+        <p>Producto no encontrado</p>
+        <ion-button fill="outline" (click)="goToCatalog()">
+          Volver al catálogo
+        </ion-button>
+      </div>
+    </ng-template>
+  </ng-container>
+</ion-content>

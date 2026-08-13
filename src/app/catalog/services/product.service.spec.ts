@@ -26,22 +26,23 @@ function makeRow(overrides: Partial<Record<string, unknown>> = {}) {
 
 // Chainable query builder mock matching the real Supabase-js builder shape:
 // every filter/order method returns itself, and the terminal call
-// (range()/limit()) resolves like a promise, since ProductService passes
-// the query straight into rxjs `from(...)`.
-function createQueryBuilder(response: { data: any[] | null; error: any }) {
+// (range()/limit()/single()) resolves like a promise, since ProductService
+// passes the query straight into rxjs `from(...)`.
+function createQueryBuilder(response: { data: any; error: any }) {
   const builder: any = {};
   ['select', 'eq', 'ilike', 'gte', 'lte', 'order'].forEach(method => {
     builder[method] = jasmine.createSpy(method).and.returnValue(builder);
   });
   builder.range = jasmine.createSpy('range').and.returnValue(Promise.resolve(response));
   builder.limit = jasmine.createSpy('limit').and.returnValue(Promise.resolve(response));
+  builder.single = jasmine.createSpy('single').and.returnValue(Promise.resolve(response));
   return builder;
 }
 
 // this.supabaseService.client.from(...) -- SupabaseService exposes the real
 // Supabase client under a `.client` property, so the mock must nest the
 // query builder one level deeper than the builder itself.
-function createMockClient(response: { data: any[] | null; error: any }) {
+function createMockClient(response: { data: any; error: any }) {
   const builder = createQueryBuilder(response);
   const supabaseClient = { from: jasmine.createSpy('from').and.returnValue(builder) };
   return { supabaseClient, builder };
@@ -151,5 +152,33 @@ describe('ProductService', () => {
     expect(builder.eq).toHaveBeenCalledWith('featured', true);
     expect(builder.limit).toHaveBeenCalledWith(8);
     expect(featured.length).toBe(8);
+  });
+
+  it('getProductById returns the mapped product when it exists and is active', async () => {
+    const { supabaseClient, builder } = createMockClient({
+      data: makeRow({ producto_id: 5, nombre: 'Vaporesso XROS 3' }),
+      error: null,
+    });
+    const scopedService = new ProductService({ client: supabaseClient } as any);
+
+    const product = await firstValueFrom(scopedService.getProductById(5));
+
+    expect(builder.eq).toHaveBeenCalledWith('producto_id', 5);
+    expect(builder.eq).toHaveBeenCalledWith('estado', true);
+    expect(product).toEqual(
+      jasmine.objectContaining({ id: 5, name: 'Vaporesso XROS 3' })
+    );
+  });
+
+  it('getProductById returns null when the product does not exist or is inactive', async () => {
+    const { supabaseClient } = createMockClient({
+      data: null,
+      error: { code: 'PGRST116', message: 'No rows found' },
+    });
+    const scopedService = new ProductService({ client: supabaseClient } as any);
+
+    const product = await firstValueFrom(scopedService.getProductById(999));
+
+    expect(product).toBeNull();
   });
 });

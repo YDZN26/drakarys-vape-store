@@ -75,6 +75,26 @@ export class ProductService {
     );
   }
 
+  getProductById(id: number): Observable<Product | null> {
+    return from(
+      this.supabaseService.client
+        .from('producto')
+        .select(PRODUCT_COLUMNS)
+        .eq('producto_id', id)
+        .eq('estado', true)
+        .single()
+    ).pipe(
+      map(({ data, error }) => {
+        if (error || !data) return null;
+        return mapToProduct(data);
+      }),
+      catchError(error => {
+        console.error('[ProductService] Failed to load product by id', error);
+        return of(null);
+      })
+    );
+  }
+
   private applySort(query: any, sort: SortOption): any {
     switch (sort) {
       case SortOption.PriceLowToHigh:
