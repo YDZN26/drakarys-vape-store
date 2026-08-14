@@ -16,7 +16,7 @@ Give the customer a persistent, accurate summary of the items they intend to buy
 | I-04 | Remove an item | Swipes the item row or taps the delete button |
 | I-05 | Confirm item removal | Confirms the removal prompt (shown only for high-value items) |
 | I-06 | Continue shopping | Navigates back to the catalog without losing cart contents |
-| I-07 | Tap "Enviar pedido por WhatsApp" | Opens wa.me with the store's WhatsApp Business number and a pre-formatted message listing each cart item as "{quantity}x {product name}", one per line |
+| I-07 | Tap "Enviar pedido por WhatsApp" | Opens wa.me with the store's WhatsApp Business number and a pre-formatted message listing each cart item as "{quantity}x {product name} - Bs. {unit price} - {detail page link}", one per line, followed by the grand total at the end |
 
 ---
 
@@ -49,4 +49,4 @@ Give the customer a persistent, accurate summary of the items they intend to buy
 - The grand total reflects only product prices; shipping and discounts are calculated at checkout.
 - A removal confirmation prompt is only shown when the line subtotal of the item exceeds a threshold defined by the store admin.
 - Tapping "Enviar pedido por WhatsApp" with an empty cart redirects the customer to the catalog instead of opening WhatsApp.
-- The WhatsApp message includes only product name and quantity, with no prices or totals — the final price is confirmed manually between the customer and the business.
+- The WhatsApp message includes, for each product: name, quantity, unit price in Bs., and a direct link to its detail page (/product/:id). The total purchase price is included at the end of the message.

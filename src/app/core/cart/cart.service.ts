@@ -59,10 +59,31 @@ export class CartService {
   }
 
   buildWhatsAppUrl(): string {
-    const lines = this.itemsSubject.value.map(
-      item => `${item.quantity}x ${item.product.name}`
-    );
-    const message = `Hola, quiero pedir:\n${lines.join('\n')}`;
+    const items = this.itemsSubject.value;
+    const origin = window.location.origin;
+
+    const blocks = items.map(item => {
+      const url = `${origin}/product/${item.product.id}`;
+      return [
+        `*${item.product.name}*`,
+        `Cantidad: ${item.quantity}`,
+        `Precio: Bs. ${item.product.price.toFixed(2)}`,
+        `URL: ${url}`,
+      ].join('\n');
+    });
+
+    const total = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+
+    const message = [
+      'Hola, quiero comprar los siguientes artículos:',
+      '',
+      blocks.join('\n\n'),
+      '',
+      `Precio Total: Bs. ${total.toFixed(2)}`,
+      '',
+      'Gracias.',
+    ].join('\n');
+
     return `https://wa.me/${environment.whatsappNumber}?text=${encodeURIComponent(message)}`;
   }
 

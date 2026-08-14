@@ -82,15 +82,43 @@ describe('CartService', () => {
 
   describe('buildWhatsAppUrl', () => {
     it('builds a wa.me URL with the cart contents encoded in the message', () => {
-      const product = makeProduct({ id: 5, name: 'Elf Bar BC5000', stock: 10 });
+      const product = makeProduct({ id: 5, name: 'Elf Bar BC5000', price: 100, stock: 10 });
       service.addItem(product, 2);
 
       const url = service.buildWhatsAppUrl();
-      const expectedMessage = 'Hola, quiero pedir:\n2x Elf Bar BC5000';
+      const productUrl = `${window.location.origin}/product/5`;
+      const expectedMessage = [
+        'Hola, quiero comprar los siguientes artículos:',
+        '',
+        '*Elf Bar BC5000*',
+        'Cantidad: 2',
+        'Precio: Bs. 100.00',
+        `URL: ${productUrl}`,
+        '',
+        'Precio Total: Bs. 200.00',
+        '',
+        'Gracias.',
+      ].join('\n');
 
       expect(url).toBe(
         `https://wa.me/${environment.whatsappNumber}?text=${encodeURIComponent(expectedMessage)}`
       );
+    });
+
+    it('includes a blank-line-separated block per product and sums the grand total', () => {
+      const productA = makeProduct({ id: 6, name: 'Elf Bar BC5000', price: 120.5, stock: 10 });
+      const productB = makeProduct({ id: 7, name: 'Lost Mary OS5000', price: 99.99, stock: 10 });
+      service.addItem(productA, 1);
+      service.addItem(productB, 3);
+
+      const url = service.buildWhatsAppUrl();
+      const decoded = decodeURIComponent(url.split('?text=')[1]);
+
+      expect(decoded).toContain('*Elf Bar BC5000*\nCantidad: 1\nPrecio: Bs. 120.50');
+      expect(decoded).toContain(`URL: ${window.location.origin}/product/6`);
+      expect(decoded).toContain('*Lost Mary OS5000*\nCantidad: 3\nPrecio: Bs. 99.99');
+      expect(decoded).toContain(`URL: ${window.location.origin}/product/7`);
+      expect(decoded).toContain('Precio Total: Bs. 420.47');
     });
   });
 });
