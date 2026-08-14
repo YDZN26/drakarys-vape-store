@@ -15,6 +15,7 @@ import { ProductService } from '../catalog/services/product.service';
 export class ProductDetailPage implements OnInit {
   product: Product | null = null;
   loading = true;
+  quantity = 0;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -34,8 +35,30 @@ export class ProductDetailPage implements OnInit {
 
     this.productService.getProductById(id).subscribe(product => {
       this.product = product;
+      this.quantity = 0;
       this.loading = false;
     });
+  }
+
+  increaseQuantity(): void {
+    if (!this.product) return;
+    this.quantity = Math.min(this.quantity + 1, this.product.stock);
+  }
+
+  decreaseQuantity(): void {
+    this.quantity = Math.max(this.quantity - 1, 0);
+  }
+
+  onQuantityChange(rawValue: string): void {
+    if (!this.product) return;
+    const parsed = Number(rawValue);
+
+    if (!Number.isFinite(parsed) || parsed < 0) {
+      this.quantity = 0;
+      return;
+    }
+
+    this.quantity = Math.min(Math.floor(parsed), this.product.stock);
   }
 
   get stockStatus(): StockStatus {
@@ -65,7 +88,7 @@ export class ProductDetailPage implements OnInit {
   async addToCart(): Promise<void> {
     if (!this.product || this.stockStatus === StockStatus.OutOfStock) return;
 
-    this.cartService.addItem(this.product, 1);
+    this.cartService.addItem(this.product, this.quantity);
 
     const toast = await this.toastCtrl.create({
       message: `${this.product.name} agregado al carrito`,

@@ -14,32 +14,71 @@
 
   <ng-container *ngIf="!loading">
     <div class="product-detail" *ngIf="product as p; else notFound">
-      <div class="image-wrapper">
-        <img
-          [src]="mainImage"
-          [alt]="p.name"
-          [class.placeholder-logo]="!p.imageUrl"
-        />
-        <ion-badge [color]="stockBadgeColor" class="stock-badge">
-          {{ stockBadgeLabel }}
-        </ion-badge>
-      </div>
+      <div class="detail-grid">
+        <div class="image-wrapper">
+          <img
+            [src]="mainImage"
+            [alt]="p.name"
+            [class.placeholder-logo]="!p.imageUrl"
+          />
+        </div>
 
-      <div class="info">
-        <p class="brand" *ngIf="p.productType">{{ p.productType }}</p>
-        <h1 class="name">{{ p.name }}</h1>
-        <p class="price">Bs. {{ p.price | number: '1.2-2' }}</p>
-        <p class="description" *ngIf="p.description">{{ p.description }}</p>
+        <div class="info">
+          <p class="brand" *ngIf="p.productType">{{ p.productType }}</p>
+          <h1 class="name">{{ p.name }}</h1>
+          <p class="price">Bs. {{ p.price | number: '1.2-2' }}</p>
 
-        <ion-button
-          expand="block"
-          class="add-to-cart-btn"
-          [disabled]="stockStatus === 'out_of_stock'"
-          (click)="addToCart()"
-        >
-          <ion-icon slot="start" name="cart-outline"></ion-icon>
-          Agregar al carrito
-        </ion-button>
+          <span
+            class="stock-pill"
+            [class.success]="stockBadgeColor === 'success'"
+            [class.warning]="stockBadgeColor === 'warning'"
+            [class.danger]="stockBadgeColor === 'danger'"
+          >
+            {{ stockBadgeLabel }}
+          </span>
+
+          <p class="qty-label">Selecciona una cantidad</p>
+          <div class="qty-controls">
+            <button
+              type="button"
+              class="qty-step-btn"
+              [disabled]="quantity <= 0"
+              (click)="decreaseQuantity()"
+            >&minus;</button>
+            <input
+              type="number"
+              class="qty-input"
+              [value]="quantity"
+              min="0"
+              [max]="p.stock"
+              (change)="onQuantityChange($any($event.target).value)"
+            />
+            <button
+              type="button"
+              class="qty-step-btn"
+              [disabled]="quantity >= p.stock"
+              (click)="increaseQuantity()"
+            >+</button>
+          </div>
+
+          <ion-button
+            expand="block"
+            class="add-to-cart-btn"
+            [disabled]="quantity === 0 || stockStatus === 'out_of_stock'"
+            (click)="addToCart()"
+          >
+            <ion-icon slot="start" name="cart-outline"></ion-icon>
+            Agregar al carrito
+          </ion-button>
+
+          <div class="description-section">
+            <h2>Descripción</h2>
+            <p class="description" *ngIf="p.description; else noDescription">{{ p.description }}</p>
+            <ng-template #noDescription>
+              <p class="description no-description">Sin descripción</p>
+            </ng-template>
+          </div>
+        </div>
       </div>
     </div>
 

@@ -37,14 +37,33 @@ ion-content.detail-content {
   }
 }
 
+// ── Two-column layout (stacked on mobile, side by side from tablet up) ───────
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  padding: 1rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+}
+
 // ── Product image ────────────────────────────────────────────────────────────
 
 .image-wrapper {
   position: relative;
   overflow: hidden;
   background: #111120;
+  border-radius: 16px;
   aspect-ratio: 1 / 1;
   width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
 
   img {
     width: 100%;
@@ -58,24 +77,13 @@ ion-content.detail-content {
       opacity: 0.2;
     }
   }
-
-  .stock-badge {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    font-size: 0.6875rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 4px 10px;
-    border-radius: 100px;
-  }
 }
 
-// ── Info block ────────────────────────────────────────────────────────────────
+// ── Info column ──────────────────────────────────────────────────────────────
 
 .info {
-  padding: 1.25rem 1rem calc(1.25rem + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
 
   .brand {
     font-size: 0.6875rem;
@@ -98,14 +106,7 @@ ion-content.detail-content {
     font-size: 1.5rem;
     font-weight: 800;
     color: #4d7bff;
-    margin: 0 0 1rem;
-  }
-
-  .description {
-    font-size: 0.9375rem;
-    color: rgba(255, 255, 255, 0.65);
-    line-height: 1.6;
-    margin: 0 0 1.5rem;
+    margin: 0 0 0.75rem;
   }
 
   .add-to-cart-btn {
@@ -119,7 +120,133 @@ ion-content.detail-content {
     font-size: 0.9375rem;
     font-weight: 700;
     letter-spacing: 0.02em;
+    margin: 0.5rem 0 0;
+  }
+}
+
+// ── Stock badge (pill) ────────────────────────────────────────────────────────
+
+.stock-pill {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+
+  &.success {
+    background: rgba(var(--ion-color-success-rgb), 0.15);
+    color: var(--ion-color-success-tint);
+  }
+
+  &.warning {
+    background: rgba(var(--ion-color-warning-rgb), 0.15);
+    color: var(--ion-color-warning);
+  }
+
+  &.danger {
+    background: rgba(var(--ion-color-danger-rgb), 0.15);
+    color: var(--ion-color-danger-tint);
+  }
+}
+
+// ── Quantity stepper ─────────────────────────────────────────────────────────
+
+.qty-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #dde2f0;
+  margin: 0 0 0.5rem;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.5rem;
+
+  .qty-step-btn {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    border: none;
+    border-radius: 10px;
+    background: var(--ion-color-primary);
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+
+    &:active {
+      background: var(--ion-color-primary-shade);
+    }
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+  }
+
+  .qty-input {
+    width: 64px;
+    height: 40px;
+    flex: 0 0 64px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    background: #111120;
+    color: #dde2f0;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 0;
+
+    // Remove native spinner arrows -- they push the number off-center.
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    -moz-appearance: textfield;
+
+    &:focus {
+      outline: none;
+      border-color: var(--ion-color-primary);
+    }
+  }
+}
+
+// ── Description section (flush against the button above -- no gap) ──────────
+
+.description-section {
+  margin-top: 0;
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #dde2f0;
+    margin: 0 0 0.5rem;
+  }
+
+  .description {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.6;
     margin: 0;
+
+    &.no-description {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.35);
+    }
   }
 }
 

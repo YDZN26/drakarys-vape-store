@@ -90,4 +90,75 @@ describe('ProductDetailPage', () => {
       fixture.nativeElement.querySelector('.add-to-cart-btn');
     expect(button?.disabled).toBeTrue();
   });
+
+  it('resets quantity to 0 when a product loads', async () => {
+    await configure(MOCK_PRODUCT);
+    expect(component.quantity).toBe(0);
+  });
+
+  it('disables the "Agregar al carrito" button when quantity is 0, even with stock available', async () => {
+    await configure(MOCK_PRODUCT);
+
+    expect(component.quantity).toBe(0);
+    expect(component.stockStatus).not.toBe(StockStatus.OutOfStock);
+
+    const button: HTMLButtonElement | null =
+      fixture.nativeElement.querySelector('.add-to-cart-btn');
+    expect(button?.disabled).toBeTrue();
+  });
+
+  it('does not let quantity go below 0', async () => {
+    await configure(MOCK_PRODUCT);
+
+    component.decreaseQuantity();
+
+    expect(component.quantity).toBe(0);
+  });
+
+  it('does not let quantity go above the product stock', async () => {
+    await configure({ ...MOCK_PRODUCT, stock: 2 });
+
+    component.increaseQuantity();
+    component.increaseQuantity();
+    component.increaseQuantity();
+
+    expect(component.quantity).toBe(2);
+  });
+
+  it('clamps a typed value greater than stock down to the available stock', async () => {
+    await configure({ ...MOCK_PRODUCT, stock: 5 });
+
+    component.onQuantityChange('999');
+
+    expect(component.quantity).toBe(5);
+  });
+
+  it('clamps a negative or invalid typed value down to 0', async () => {
+    await configure({ ...MOCK_PRODUCT, stock: 5 });
+
+    component.onQuantityChange('3');
+    expect(component.quantity).toBe(3);
+
+    component.onQuantityChange('-2');
+    expect(component.quantity).toBe(0);
+
+    component.onQuantityChange('not-a-number');
+    expect(component.quantity).toBe(0);
+  });
+
+  it('addToCart calls cartService.addItem with the selected quantity, not always 1', async () => {
+    await configure({ ...MOCK_PRODUCT, stock: 5 });
+
+    component.increaseQuantity();
+    component.increaseQuantity();
+    component.increaseQuantity();
+    expect(component.quantity).toBe(3);
+
+    await component.addToCart();
+
+    expect(cartServiceSpy.addItem).toHaveBeenCalledWith(
+      { ...MOCK_PRODUCT, stock: 5 },
+      3
+    );
+  });
 });
