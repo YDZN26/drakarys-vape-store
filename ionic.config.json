@@ -3,5 +3,9 @@
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular"
+  "type": "angular",
+  "hooks": {
+    "build:before": "scripts/generate-env.js",
+    "serve:before": "scripts/generate-env.js"
+  }
 }
