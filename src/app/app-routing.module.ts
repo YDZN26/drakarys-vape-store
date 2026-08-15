@@ -22,6 +22,11 @@ const routes: Routes = [
       import('./product-detail/product-detail.module').then(m => m.ProductDetailModule),
   },
   {
+    path: 'guias/primer-vape',
+    loadChildren: () =>
+      import('./guia-primer-vape/guia-primer-vape.module').then(m => m.GuiaPrimerVapeModule),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

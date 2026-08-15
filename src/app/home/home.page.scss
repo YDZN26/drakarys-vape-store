@@ -237,6 +237,24 @@ ion-content.home-content {
     }
   }
 
+  .discover-product-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  &.dc-1 .discover-product-img {
+    object-position: 90% center;
+    transform: scale(1.5);
+    transform-origin: 90% center;
+  }
+
   &.dc-2 {
     background: linear-gradient(145deg, #1a0800 0%, #3d1400 100%);
   }
@@ -248,6 +266,7 @@ ion-content.home-content {
   .discover-overlay {
     position: absolute;
     inset: 0;
+    z-index: 1;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, transparent 65%);
     display: flex;
     flex-direction: column;
