@@ -27,6 +27,11 @@ const routes: Routes = [
       import('./guia-primer-vape/guia-primer-vape.module').then(m => m.GuiaPrimerVapeModule),
   },
   {
+    path: 'guias/sales-vs-base-libre',
+    loadChildren: () =>
+      import('./guia-sales-vs-freebase/guia-sales-vs-freebase.module').then(m => m.GuiaSalesVsFreebaseModule),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
