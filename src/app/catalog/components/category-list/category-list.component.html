@@ -10,6 +10,6 @@
     [class.active]="activeCategoryId === category.id"
     (click)="select(category.id)"
   >
-    {{ category.name }}
+    {{ category.name | categoryName: category.id }}
   </ion-chip>
 </div>

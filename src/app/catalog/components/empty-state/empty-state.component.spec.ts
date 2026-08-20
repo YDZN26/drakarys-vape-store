@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmptyStateComponent } from './empty-state.component';
+import { CategoryNamePipe } from '../../../core/pipes/category-name.pipe';
 import { Category } from '../../../core/models/category.model';
 
 const MOCK_CATEGORIES: Category[] = [
@@ -14,7 +15,7 @@ describe('EmptyStateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [EmptyStateComponent],
+      declarations: [EmptyStateComponent, CategoryNamePipe],
       imports: [IonicModule.forRoot(), TranslateModule.forRoot()],
     }).compileComponents();
 

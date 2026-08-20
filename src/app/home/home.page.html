@@ -55,7 +55,7 @@
       <ion-segment-button
         *ngFor="let category of categories$ | async"
         [value]="category.id"
-      ><ion-label>{{ category.name }}</ion-label></ion-segment-button>
+      ><ion-label>{{ category.name | categoryName: category.id }}</ion-label></ion-segment-button>
     </ion-segment>
 
     <div class="products-grid">
@@ -159,7 +159,7 @@
         <h4>{{ 'footer.productsTitle' | translate }}</h4>
         <ul>
           <li *ngFor="let category of categories$ | async">
-            <a (click)="goToCategory(category.id)">{{ category.name }}</a>
+            <a (click)="goToCategory(category.id)">{{ category.name | categoryName: category.id }}</a>
           </li>
         </ul>
       </div>

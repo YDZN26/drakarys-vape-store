@@ -1,1 +1,226 @@
-{}
+{
+  "common": {
+    "addToCart": "Add to Cart",
+    "viewMore": "See More",
+    "readMore": "Read More",
+    "backToCatalog": "Back to Catalog",
+    "guidesTag": "GUIDES",
+    "brandName": "DRAKARYS",
+    "salesVsFreebaseTitle": "Salt Nic or Freebase: Which One's Right for Your Vape?",
+    "vapeCollectionImgAlt": "Collection of vaping devices",
+    "currencySymbol": "Bs."
+  },
+  "catalog": {
+    "title": "Catalog",
+    "filtersButton": "Filters",
+    "activeFilterChips": {
+      "clearAll": "Clear All"
+    },
+    "categoryList": {
+      "all": "All"
+    },
+    "emptyState": {
+      "title": "We couldn't find that product",
+      "subtitle": "Try adjusting your search or filters, or browse a category below.",
+      "clearFilters": "Clear Filters",
+      "browseCategories": "Browse categories:"
+    },
+    "filterPanel": {
+      "cancel": "Cancel",
+      "title": "Filters",
+      "reset": "Reset",
+      "priceLabel": "Price: Bs. {{lower}} – Bs. {{upper}}",
+      "apply": "Apply Filters"
+    },
+    "productGrid": {
+      "resultsFoundSingular": "{{count}} product found",
+      "resultsFoundPlural": "{{count}} products found",
+      "loadingMore": "Loading more..."
+    },
+    "searchBar": {
+      "placeholder": "Search products or brands..."
+    },
+    "sortSelector": {
+      "placeholder": "Sort by"
+    }
+  },
+  "cart": {
+    "title": "My Cart",
+    "emptyMessage": "Your cart is empty",
+    "pricePerUnitSuffix": "each",
+    "total": "Total",
+    "sendWhatsAppOrder": "Send Order via WhatsApp",
+    "outOfStockToast": "No more stock available for this product",
+    "whatsappMessage": {
+      "greeting": "Hi! I'd like to order the following items:",
+      "quantityLabel": "Quantity: {{quantity}}",
+      "priceLabel": "Price: Bs. {{price}}",
+      "urlLabel": "URL: {{url}}",
+      "totalLabel": "Grand Total: Bs. {{total}}",
+      "thanks": "Thank you!"
+    }
+  },
+  "productDetail": {
+    "title": "Product Detail",
+    "selectQuantity": "Select a quantity",
+    "descriptionTitle": "Description",
+    "noDescription": "No description available",
+    "notFound": "Product not found"
+  },
+  "product": {
+    "noImageAlt": "No image available",
+    "viewDetails": "View Details",
+    "stockBadge": {
+      "inStock": "In Stock",
+      "lowStock": "Low Stock",
+      "outOfStock": "Out of Stock"
+    },
+    "addedToCartToast": "{{productName}} added to cart"
+  },
+  "sort": {
+    "relevance": "Relevance",
+    "priceLowToHigh": "Price: Low to High",
+    "priceHighToLow": "Price: High to Low",
+    "newest": "Newest"
+  },
+  "home": {
+    "hero": {
+      "viewCatalogAriaLabel": "View full catalog",
+      "bannerAlt": "Drakarys Vape Store"
+    },
+    "catalogSection": {
+      "title": "Our Products",
+      "subtitle": "Guaranteed quality · Prices in Bs.",
+      "allCategoriesLabel": "All",
+      "viewAllButton": "View Full Catalog"
+    },
+    "discoverSection": {
+      "title": "Discover Vaping",
+      "subtitle": "Guides, news, and trends",
+      "card1ImgAlt": "Life Pod Eco 3",
+      "card1Tag": "NEWS",
+      "card1Title": "New Life Pod Eco 3 Coming Soon to Bolivia",
+      "card2Title": "How to Get Started With Your First Vape",
+      "card3ImgAlt": "Nicotine salt and freebase e-liquid bottles from Kings Crest",
+      "card3Tag": "TRENDING"
+    },
+    "infoSection": {
+      "storeTitle": "Our Store",
+      "storeText": "Sellers and distributors of vaping and smoke shop products in Sucre since 2023.",
+      "warrantyTitle": "Warranty",
+      "warrantyText": "Our products come with a 24-hour warranty covering factory defects or malfunctions. We're not responsible for damage caused by misuse.",
+      "verificationTitle": "Product Verification",
+      "verificationText": "All our products are 100% authentic and verifiable with an official QR code."
+    }
+  },
+  "footer": {
+    "logoAlt": "Drakarys",
+    "tagline": "Vape Store · Bolivia",
+    "productsTitle": "Products",
+    "contactTitle": "Contact Us",
+    "instagramTitle": "Instagram",
+    "facebookTitle": "Facebook",
+    "whatsappTitle": "WhatsApp",
+    "address": "Sucre, Bolivia",
+    "copyright": "© 2025 Drakarys Vape Store · For adults 18 and older only"
+  },
+  "ageGate": {
+    "title": "Are you 18 or older?",
+    "description": "This site sells products intended exclusively for adults. You must be 18 or older to enter.",
+    "confirmButton": "YES, I'M OF LEGAL AGE",
+    "declineButton": "NO, I'M UNDERAGE"
+  },
+  "storeClosedBanner": {
+    "defaultMessage": "We're currently closed. Come back during business hours."
+  },
+  "guides": {
+    "common": {
+      "disclaimer": "Exclusively for sale to adults 18 and older."
+    },
+    "primerVape": {
+      "toolbarTitle": "Beginner's Guide",
+      "title": "The Complete Guide: How to Start Vaping and Choose Your Ideal Device",
+      "intro": {
+        "paragraph1": "Taking your first step into vaping can feel overwhelming given the sheer variety of formats, power levels, and e-liquid types out there. If you smoke and you're looking for a lower-risk alternative, public health bodies like the UK's National Health Service (NHS) note that vaping is significantly less harmful than smoking combustible tobacco. That said, it's not risk-free, and it's not meant for people who have never smoked.",
+        "paragraph2": "To make an informed switch, it helps to understand how devices are classified and which type of e-liquid goes with each one."
+      },
+      "section1": {
+        "title": "Getting Started: Disposables and Swappable Pod Systems",
+        "body": "If you're just starting out, the best move is to go with a simple, lower-capacity option (400 to 1,500 puffs) at a moderate nicotine strength (2% or 3%), rather than jumping straight to the biggest device or 5% nicotine. This lets you get a feel for flavors, sensations, and satisfaction level without overspending.",
+        "item1Label": "Basic disposables:",
+        "item1Text": "These range from 400 all the way up to 70,000-puff models. Anything above 6,000 puffs typically includes a USB charging port so you can use up the full e-liquid capacity before tossing the device.",
+        "item2Label": "Swappable pod systems:",
+        "item2Text": "Devices like the Waka Creator or the Life Pod Eco 2 keep the same battery. Once the e-liquid runs out, you just swap in a new pre-filled pod — less waste, less hassle."
+      },
+      "section2": {
+        "title": "Refillable (Open) Vapes: Nicotine Salts or Freebase?",
+        "body": "Once you're looking for more customization, refillable tank or open-pod devices come into play. Here, matching the device to the right e-liquid is essential:",
+        "item1Label": "Pod systems (for nicotine salts):",
+        "item1Text": "Compact, low-power devices (10W to 20W) with high-resistance coils (0.8Ω to 1.2Ω). They use nicotine salts (20 mg/ml to 50 mg/ml), ideal for a tight mouth-to-lung draw, a smooth throat hit, and fast nicotine absorption with minimal vapor.",
+        "item2Label": "Mods and pod-mods (for freebase):",
+        "item2Text": "Larger devices with high power output (30W to 80W+) and low sub-ohm resistance (0.15Ω to 0.4Ω). They use traditional freebase nicotine at low concentrations (3 mg/ml or 6 mg/ml), producing big clouds with a direct lung draw."
+      },
+      "section3": {
+        "title": "Why You Should Never Mix Up Your E-Liquids",
+        "item1Label": "Nicotine salts in a high-power mod:",
+        "item1Text": "Dangerous. Vaporizing 35 mg or 50 mg e-liquid at 50W delivers an excessive dose of nicotine in seconds, causing intense dizziness, nausea, and headaches.",
+        "item2Label": "Freebase in a small pod:",
+        "item2Text": "Inefficient. Freebase e-liquids are thicker, so a small pod will burn through its coil fast due to poor wicking — and at just 3 mg or 6 mg of nicotine, you won't feel satisfied taking small, discreet puffs."
+      },
+      "table": {
+        "header1": "Vape Type",
+        "header2": "Power & Resistance",
+        "header3": "Compatible E-Liquid",
+        "header4": "Draw Style",
+        "row1Col1": "Disposable / Pre-filled",
+        "row1Col2": "Fixed (automatic)",
+        "row1Col3": "Built-in nicotine salt",
+        "row1Col4": "Mouth-to-lung (MTL)",
+        "row2Col1": "Refillable Pod",
+        "row2Col2": "Low (10W - 20W / ≥0.8Ω)",
+        "row2Col3": "Nicotine salts (20 - 50 mg)",
+        "row2Col4": "Mouth-to-lung (MTL)",
+        "row3Col1": "Mod / Sub-Ohm",
+        "row3Col2": "High (30W - 80W+ / ≤0.4Ω)",
+        "row3Col3": "Freebase (3 - 6 mg)",
+        "row3Col4": "Direct-to-lung (DTL)"
+      },
+      "section4": {
+        "title": "Basic Device Care",
+        "item1": "Use standard chargers or a computer's USB port; avoid fast phone chargers, which can degrade the battery over time.",
+        "item2": "Keep devices away from direct heat sources or the inside of a car to prevent leaks.",
+        "item3": "Take slow, gentle puffs so the cotton has time to properly re-saturate between hits."
+      }
+    },
+    "salesVsFreebase": {
+      "toolbarTitle": "Salt Nic vs. Freebase",
+      "heroImgAlt": "100ml freebase e-liquid bottles and 30ml nicotine salt bottles from Kings Crest",
+      "intro": "Picking the wrong e-liquid for your device isn't just a flavor issue — it can wreck the whole experience, or straight-up make you feel sick. Here's why, based on your device's ohm rating.",
+      "section1": {
+        "title": "What Are Nicotine Salts?",
+        "body1": "Chemically, it's the same nicotine found in freebase, but treated with an acid (usually benzoic acid) that lowers its pH. That change does two key things: it makes the throat hit dramatically smoother — even at high strengths, from 20mg to 50mg — and it gets nicotine into your system faster.",
+        "body2": "They work best in high-resistance devices (0.8Ω or more) at low power (10W to 20W) — the kind of setup that's typically a tight mouth-to-lung draw, which is exactly where salts perform best."
+      },
+      "section2": {
+        "title": "What Is Freebase Nicotine?",
+        "body1": "This is nicotine in its traditional, untreated form. It has a higher (more alkaline) pH, which gives it that characteristic throat \"kick\" — enjoyable for some, harsh for others if the concentration is too high. That's why it's almost always sold at low strengths, between 3mg and 6mg: at higher concentrations, that kick gets uncomfortable fast.",
+        "body2": "It works best in low-resistance devices (0.5Ω or less) at high power (30W and up) — mods and sub-ohm setups built for a direct-to-lung draw and big clouds."
+      },
+      "section3": {
+        "title": "Using Salt Nic in a High-Power (Sub-Ohm) Device",
+        "body": "Double trouble. First, salt nic usually comes in high concentrations (30-50mg) — at high power, each puff vaporizes way more e-liquid at once, so you end up inhaling far more nicotine than your body can comfortably handle. The result: dizziness, nausea, headaches, a racing heart. It's not random — it's a predictable chemical reaction."
+      },
+      "section4": {
+        "title": "Using Freebase in a Small (Low-Power) Pod",
+        "body": "Here the problem runs the other way: since freebase usually comes in low concentrations (3-6mg) and a small pod already produces little vapor per puff, it's hard to feel satisfied — you'll end up taking way more puffs than you would with salts, without getting the same effect. On top of that, freebase tends to be thicker, and in a small coil without good airflow it can saturate the wick faster, leaving you with a burnt taste sooner than expected."
+      },
+      "section5": {
+        "title": "The Simple Rule",
+        "item1": "Is your device rated 0.8Ω or higher? → Nicotine salts.",
+        "item2": "Is your device rated 0.5Ω or lower? → Freebase.",
+        "item3": "Closed pod system with no wattage adjustment? → Nicotine salts.",
+        "item4": "Open mod or tank with wattage control? → Freebase."
+      }
+    }
+  }
+}

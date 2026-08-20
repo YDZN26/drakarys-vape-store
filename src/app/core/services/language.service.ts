@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { CATEGORY_TRANSLATIONS } from '../constants/category-translations';
 
 const LANG_STORAGE_KEY = 'drakarys_lang';
 type SupportedLang = 'es' | 'en';
@@ -31,5 +32,13 @@ export class LanguageService {
   setLanguage(lang: SupportedLang): void {
     this.translate.use(lang);
     localStorage.setItem(LANG_STORAGE_KEY, lang);
+  }
+
+  getCategoryDisplayName(categoryId: number, categoryName: string): string {
+    const translation = CATEGORY_TRANSLATIONS[categoryId];
+    if (!translation) {
+      return categoryName;
+    }
+    return this.translate.currentLang === 'en' ? translation.en : translation.es;
   }
 }

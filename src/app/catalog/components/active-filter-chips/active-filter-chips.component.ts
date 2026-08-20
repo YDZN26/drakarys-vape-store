@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Category } from '../../../core/models/category.model';
 import { ProductFilters } from '../../../core/models/product-filters.model';
+import { LanguageService } from '../../../core/services/language.service';
 
 export interface ActiveFilter {
   key: keyof ProductFilters;
@@ -26,6 +27,8 @@ export class ActiveFilterChipsComponent {
   _filters: ProductFilters = {};
   activeFilters: ActiveFilter[] = [];
 
+  constructor(private readonly languageService: LanguageService) {}
+
   get hasFilters(): boolean {
     return this.activeFilters.length > 0;
   }
@@ -35,7 +38,10 @@ export class ActiveFilterChipsComponent {
 
     if (filters.categoryId !== undefined) {
       const category = this.categories.find(c => c.id === filters.categoryId);
-      result.push({ key: 'categoryId', label: category?.name ?? 'Category' });
+      const label = category
+        ? this.languageService.getCategoryDisplayName(category.id, category.name)
+        : 'Category';
+      result.push({ key: 'categoryId', label });
     }
     if (filters.searchTerm) {
       result.push({ key: 'searchTerm', label: `"${filters.searchTerm}"` });
