@@ -3,15 +3,15 @@
     <ion-icon name="search-outline"></ion-icon>
   </div>
 
-  <h2>We couldn't find that product</h2>
-  <p>Try adjusting your search or filters, or browse a category below.</p>
+  <h2>{{ 'catalog.emptyState.title' | translate }}</h2>
+  <p>{{ 'catalog.emptyState.subtitle' | translate }}</p>
 
   <ion-button fill="outline" color="primary" (click)="onClearFilters()">
-    Clear filters
+    {{ 'catalog.emptyState.clearFilters' | translate }}
   </ion-button>
 
   <div class="suggestions" *ngIf="categories.length > 0">
-    <p class="suggestions-label">Browse categories:</p>
+    <p class="suggestions-label">{{ 'catalog.emptyState.browseCategories' | translate }}</p>
     <div class="suggestion-chips">
       <ion-chip
         *ngFor="let cat of categories"

@@ -3,50 +3,50 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home" class="guide-back-btn"></ion-back-button>
     </ion-buttons>
-    <ion-title><span class="toolbar-brand">Guía para principiantes</span></ion-title>
+    <ion-title><span class="toolbar-brand">{{ 'guides.primerVape.toolbarTitle' | translate }}</span></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="guide-content">
   <article class="guide-article">
-    <img class="guide-hero-img" src="assets/images/vape-display-collection.jpg" alt="Colección de dispositivos de vapeo">
-    <p class="brand">GUÍAS</p>
-    <h1 class="name">Guía completa: Cómo empezar en el vapeo y elegir tu dispositivo ideal</h1>
+    <img class="guide-hero-img" src="assets/images/vape-display-collection.jpg" [attr.alt]="'common.vapeCollectionImgAlt' | translate">
+    <p class="brand">{{ 'common.guidesTag' | translate }}</p>
+    <h1 class="name">{{ 'guides.primerVape.title' | translate }}</h1>
 
     <p class="description">
-      Dar el primer paso en el mundo del vapeo suele generar dudas debido a la gran variedad de formatos, potencias y tipos de líquidos. Si fumás y buscás una alternativa de menor impacto, organismos de salud pública como el Servicio Nacional de Salud del Reino Unido (NHS) señalan que vapear es significativamente menos dañino que fumar tabaco por combustión. Sin embargo, no es una práctica libre de riesgos ni está pensada para personas que nunca han fumado.
+      {{ 'guides.primerVape.intro.paragraph1' | translate }}
     </p>
     <p class="description">
-      Para hacer una transición informada, es clave conocer cómo se clasifican los dispositivos y qué tipo de líquido corresponde a cada uno.
+      {{ 'guides.primerVape.intro.paragraph2' | translate }}
     </p>
 
     <section class="description-section">
-      <h2>El inicio práctico: Desechables y cartuchos intercambiables</h2>
+      <h2>{{ 'guides.primerVape.section1.title' | translate }}</h2>
       <p class="description">
-        Para dar los primeros pasos, la recomendación principal es comenzar por opciones simples y de menor capacidad (entre 400 y 1.500 puffs) con concentraciones moderadas (2% o 3%), en lugar de saltar directo al formato más grande o al 5% de nicotina. Esto permite evaluar sabores, sensaciones y nivel de saciedad sin gastar de más.
+        {{ 'guides.primerVape.section1.body' | translate }}
       </p>
       <ul class="article-list">
-        <li><strong>Desechables simples:</strong> Su duración va desde los 400 hasta modelos de 70.000 puffs. A partir de los 6.000 puffs, incorporan un puerto de recarga USB para aprovechar todo el contenido antes de descartar el equipo.</li>
-        <li><strong>Sistemas de cartucho intercambiable:</strong> Equipos como el Waka Creator o el Life Pod Eco 2 conservan la batería principal. Una vez que se termina el líquido, solo se reemplaza el cartucho prellenado, reduciendo residuos.</li>
+        <li><strong>{{ 'guides.primerVape.section1.item1Label' | translate }}</strong> {{ 'guides.primerVape.section1.item1Text' | translate }}</li>
+        <li><strong>{{ 'guides.primerVape.section1.item2Label' | translate }}</strong> {{ 'guides.primerVape.section1.item2Text' | translate }}</li>
       </ul>
     </section>
 
     <section class="description-section">
-      <h2>Vapes recargables (abiertos): ¿Sales de Nicotina o Base Libre?</h2>
+      <h2>{{ 'guides.primerVape.section2.title' | translate }}</h2>
       <p class="description">
-        Cuando se busca mayor personalización, entran los dispositivos recargables de tanque o cartucho abierto. Aquí la compatibilidad entre el equipo y el líquido es fundamental:
+        {{ 'guides.primerVape.section2.body' | translate }}
       </p>
       <ul class="article-list">
-        <li><strong>Sistemas Pod (para Sales de Nicotina):</strong> Dispositivos compactos de baja potencia (10W a 20W) y resistencias altas (0.8Ω a 1.2Ω). Utilizan sales de nicotina (concentraciones de 20 mg/ml a 50 mg/ml), ideales para una calada cerrada (boca a pulmón), golpe de garganta suave y absorción rápida con poco vapor.</li>
-        <li><strong>Mods y Pod-Mods (para Base Libre):</strong> Equipos de mayor tamaño, alta potencia (30W a 80W+) y resistencias bajas sub-ohm (0.15Ω a 0.4Ω). Utilizan nicotina tradicional de base libre en bajas concentraciones (3 mg/ml o 6 mg/ml), produciendo grandes nubes de vapor con calada directa a pulmón.</li>
+        <li><strong>{{ 'guides.primerVape.section2.item1Label' | translate }}</strong> {{ 'guides.primerVape.section2.item1Text' | translate }}</li>
+        <li><strong>{{ 'guides.primerVape.section2.item2Label' | translate }}</strong> {{ 'guides.primerVape.section2.item2Text' | translate }}</li>
       </ul>
     </section>
 
     <section class="description-section">
-      <h2>¿Por qué nunca se deben invertir los líquidos?</h2>
+      <h2>{{ 'guides.primerVape.section3.title' | translate }}</h2>
       <ul class="article-list">
-        <li><strong>Sales de nicotina en un Mod de alta potencia:</strong> Es peligroso. Vaporizar líquidos de 35 mg o 50 mg a 50W introduce una dosis excesiva de nicotina en segundos, provocando mareos intensos, náuseas y dolor de cabeza.</li>
-        <li><strong>Base libre en un Pod pequeño:</strong> Ineficiente. Los líquidos de base libre son más densos; en un Pod chico queman la resistencia rápido por falta de drenaje y, al tener solo 3 mg o 6 mg de nicotina, no generan saciedad en caladas discretas.</li>
+        <li><strong>{{ 'guides.primerVape.section3.item1Label' | translate }}</strong> {{ 'guides.primerVape.section3.item1Text' | translate }}</li>
+        <li><strong>{{ 'guides.primerVape.section3.item2Label' | translate }}</strong> {{ 'guides.primerVape.section3.item2Text' | translate }}</li>
       </ul>
     </section>
 
@@ -54,44 +54,44 @@
       <table class="article-table">
         <thead>
           <tr>
-            <th>Tipo de Vape</th>
-            <th>Potencia y Resistencia</th>
-            <th>Líquido compatible</th>
-            <th>Estilo de calada</th>
+            <th>{{ 'guides.primerVape.table.header1' | translate }}</th>
+            <th>{{ 'guides.primerVape.table.header2' | translate }}</th>
+            <th>{{ 'guides.primerVape.table.header3' | translate }}</th>
+            <th>{{ 'guides.primerVape.table.header4' | translate }}</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Desechable / Prellenado</td>
-            <td>Fija (automática)</td>
-            <td>Sal de nicotina integrada</td>
-            <td>Boca a pulmón (MTL)</td>
+            <td>{{ 'guides.primerVape.table.row1Col1' | translate }}</td>
+            <td>{{ 'guides.primerVape.table.row1Col2' | translate }}</td>
+            <td>{{ 'guides.primerVape.table.row1Col3' | translate }}</td>
+            <td>{{ 'guides.primerVape.table.row1Col4' | translate }}</td>
           </tr>
           <tr>
-            <td>Pod Recargable</td>
-            <td>Baja (10W - 20W / &ge;0.8Ω)</td>
-            <td>Sales de nicotina (20 - 50 mg)</td>
-            <td>Boca a pulmón (MTL)</td>
+            <td>{{ 'guides.primerVape.table.row2Col1' | translate }}</td>
+            <td>{{ 'guides.primerVape.table.row2Col2' | translate }}</td>
+            <td>{{ 'guides.primerVape.table.row2Col3' | translate }}</td>
+            <td>{{ 'guides.primerVape.table.row2Col4' | translate }}</td>
           </tr>
           <tr>
-            <td>Mod / Sub-ohm</td>
-            <td>Alta (30W - 80W+ / &le;0.4Ω)</td>
-            <td>Base libre (3 - 6 mg)</td>
-            <td>Directo a pulmón (DTL)</td>
+            <td>{{ 'guides.primerVape.table.row3Col1' | translate }}</td>
+            <td>{{ 'guides.primerVape.table.row3Col2' | translate }}</td>
+            <td>{{ 'guides.primerVape.table.row3Col3' | translate }}</td>
+            <td>{{ 'guides.primerVape.table.row3Col4' | translate }}</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <section class="description-section">
-      <h2>Cuidados básicos del equipo</h2>
+      <h2>{{ 'guides.primerVape.section4.title' | translate }}</h2>
       <ul class="article-list">
-        <li>Usá cargadores estándar o puertos USB de computadora; evitá cargadores ultrarrápidos de celular para no degradar la batería.</li>
-        <li>Mantené los dispositivos lejos de fuentes de calor directo o del interior de vehículos para prevenir filtraciones.</li>
-        <li>Da caladas suaves y pausadas para permitir que el algodón se rehidrate adecuadamente entre caladas.</li>
+        <li>{{ 'guides.primerVape.section4.item1' | translate }}</li>
+        <li>{{ 'guides.primerVape.section4.item2' | translate }}</li>
+        <li>{{ 'guides.primerVape.section4.item3' | translate }}</li>
       </ul>
     </section>
 
-    <p class="guide-disclaimer">Venta exclusiva para mayores de 18 años.</p>
+    <p class="guide-disclaimer">{{ 'guides.common.disclaimer' | translate }}</p>
   </article>
 </ion-content>

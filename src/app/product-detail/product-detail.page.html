@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/catalog" class="detail-back-btn"></ion-back-button>
     </ion-buttons>
-    <ion-title><span class="toolbar-brand">Detalle del producto</span></ion-title>
+    <ion-title><span class="toolbar-brand">{{ 'productDetail.title' | translate }}</span></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -37,7 +37,7 @@
             {{ stockBadgeLabel }}
           </span>
 
-          <p class="qty-label">Selecciona una cantidad</p>
+          <p class="qty-label">{{ 'productDetail.selectQuantity' | translate }}</p>
           <div class="qty-controls">
             <button
               type="button"
@@ -68,14 +68,14 @@
             (click)="addToCart()"
           >
             <ion-icon slot="start" name="cart-outline"></ion-icon>
-            Agregar al carrito
+            {{ 'common.addToCart' | translate }}
           </ion-button>
 
           <div class="description-section">
-            <h2>Descripción</h2>
+            <h2>{{ 'productDetail.descriptionTitle' | translate }}</h2>
             <p class="description" *ngIf="p.description; else noDescription">{{ p.description }}</p>
             <ng-template #noDescription>
-              <p class="description no-description">Sin descripción</p>
+              <p class="description no-description">{{ 'productDetail.noDescription' | translate }}</p>
             </ng-template>
           </div>
         </div>
@@ -85,9 +85,9 @@
     <ng-template #notFound>
       <div class="empty-state">
         <ion-icon name="alert-circle-outline" class="empty-icon"></ion-icon>
-        <p>Producto no encontrado</p>
+        <p>{{ 'productDetail.notFound' | translate }}</p>
         <ion-button fill="outline" (click)="goToCatalog()">
-          Volver al catálogo
+          {{ 'common.backToCatalog' | translate }}
         </ion-button>
       </div>
     </ng-template>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 import { CartItem } from '../models/cart-item.model';
 import { Product } from '../models/product.model';
 import { environment } from '../../../environments/environment';
@@ -18,6 +19,8 @@ export class CartService {
   readonly totalPrice$: Observable<number> = this.items$.pipe(
     map(items => items.reduce((total, item) => total + item.product.price * item.quantity, 0))
   );
+
+  constructor(private readonly translateService: TranslateService) {}
 
   addItem(product: Product, quantity = 1): void {
     const items = this.itemsSubject.value;
@@ -66,22 +69,24 @@ export class CartService {
       const url = `${origin}/product/${item.product.id}`;
       return [
         `*${item.product.name}*`,
-        `Cantidad: ${item.quantity}`,
-        `Precio: Bs. ${item.product.price.toFixed(2)}`,
-        `URL: ${url}`,
+        this.translateService.instant('cart.whatsappMessage.quantityLabel', { quantity: item.quantity }),
+        this.translateService.instant('cart.whatsappMessage.priceLabel', {
+          price: item.product.price.toFixed(2),
+        }),
+        this.translateService.instant('cart.whatsappMessage.urlLabel', { url }),
       ].join('\n');
     });
 
     const total = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
 
     const message = [
-      'Hola, quiero comprar los siguientes artículos:',
+      this.translateService.instant('cart.whatsappMessage.greeting'),
       '',
       blocks.join('\n\n'),
       '',
-      `Precio Total: Bs. ${total.toFixed(2)}`,
+      this.translateService.instant('cart.whatsappMessage.totalLabel', { total: total.toFixed(2) }),
       '',
-      'Gracias.',
+      this.translateService.instant('cart.whatsappMessage.thanks'),
     ].join('\n');
 
     return `https://wa.me/${environment.whatsappNumber}?text=${encodeURIComponent(message)}`;

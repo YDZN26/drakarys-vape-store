@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 
 import { ProductDetailPage } from './product-detail.page';
@@ -38,7 +39,7 @@ describe('ProductDetailPage', () => {
 
     await TestBed.configureTestingModule({
       declarations: [ProductDetailPage],
-      imports: [IonicModule.forRoot()],
+      imports: [IonicModule.forRoot(), TranslateModule.forRoot()],
       providers: [
         { provide: ProductService, useValue: productServiceSpy },
         { provide: CartService, useValue: cartServiceSpy },
@@ -48,6 +49,16 @@ describe('ProductDetailPage', () => {
         },
       ],
     }).compileComponents();
+
+    const translateService = TestBed.inject(TranslateService);
+    translateService.setTranslation(
+      'es',
+      {
+        productDetail: { notFound: 'Producto no encontrado' },
+      },
+      true
+    );
+    translateService.use('es');
 
     fixture = TestBed.createComponent(ProductDetailPage);
     component = fixture.componentInstance;

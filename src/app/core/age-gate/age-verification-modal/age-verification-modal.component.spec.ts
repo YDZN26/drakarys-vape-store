@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule, ModalController } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 import { AgeVerificationModalComponent } from './age-verification-modal.component';
 import { AgeVerificationService } from '../age-verification.service';
 import { WindowRef } from '../../window/window-ref.service';
@@ -25,7 +26,7 @@ describe('AgeVerificationModalComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [AgeVerificationModalComponent],
-      imports: [IonicModule.forRoot()],
+      imports: [IonicModule.forRoot(), TranslateModule.forRoot()],
       providers: [
         { provide: AgeVerificationService, useValue: ageServiceSpy },
         { provide: ModalController, useValue: modalCtrlSpy },

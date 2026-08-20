@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="home-toolbar">
     <ion-title>
-      <span class="toolbar-brand">DRAKARYS</span>
+      <span class="toolbar-brand">{{ 'common.brandName' | translate }}</span>
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="goToCatalog()" class="toolbar-btn">
@@ -24,13 +24,13 @@
        HERO BANNER
        ════════════════════════════════════════════════════════════════════════ -->
   <section class="hero-section">
-    <a (click)="goToCatalog()" class="hero-banner-link" role="button" aria-label="Ver catálogo completo">
+    <a (click)="goToCatalog()" class="hero-banner-link" role="button" [attr.aria-label]="'home.hero.viewCatalogAriaLabel' | translate">
       <picture>
         <source media="(min-width: 768px)" srcset="assets/images/hero-banner-desktop.png">
-        <img src="assets/images/hero-banner-mobile.png" alt="Drakarys Vape Store" class="hero-banner-img">
+        <img src="assets/images/hero-banner-mobile.png" [attr.alt]="'home.hero.bannerAlt' | translate" class="hero-banner-img">
       </picture>
       <span class="hero-banner-cta">
-        Ver más
+        {{ 'common.viewMore' | translate }}
         <ion-icon name="arrow-forward-outline"></ion-icon>
       </span>
     </a>
@@ -41,8 +41,8 @@
        ════════════════════════════════════════════════════════════════════════ -->
   <section class="catalog-section">
     <div class="section-header-dark">
-      <h2>Nuestros Productos</h2>
-      <p>Calidad garantizada · Precios en Bs.</p>
+      <h2>{{ 'home.catalogSection.title' | translate }}</h2>
+      <p>{{ 'home.catalogSection.subtitle' | translate }}</p>
     </div>
 
     <ion-segment
@@ -51,7 +51,7 @@
       class="category-segment"
       scrollable="true"
     >
-      <ion-segment-button value="ALL"><ion-label>Todos</ion-label></ion-segment-button>
+      <ion-segment-button value="ALL"><ion-label>{{ 'home.catalogSection.allCategoriesLabel' | translate }}</ion-label></ion-segment-button>
       <ion-segment-button
         *ngFor="let category of categories$ | async"
         [value]="category.id"
@@ -68,7 +68,7 @@
 
     <div class="view-all-wrap">
       <ion-button expand="block" fill="outline" class="view-all-btn" (click)="goToCatalog()">
-        Ver catálogo completo
+        {{ 'home.catalogSection.viewAllButton' | translate }}
         <ion-icon slot="end" name="grid-outline"></ion-icon>
       </ion-button>
     </div>
@@ -79,37 +79,37 @@
        ════════════════════════════════════════════════════════════════════════ -->
   <section class="discover-section">
     <div class="section-header-light">
-      <h2>Descubre el Vaping</h2>
-      <p>Guías, noticias y tendencias</p>
+      <h2>{{ 'home.discoverSection.title' | translate }}</h2>
+      <p>{{ 'home.discoverSection.subtitle' | translate }}</p>
     </div>
     <div class="discover-grid">
       <a class="discover-card dc-1" href="https://lifepodoficial.com/eco-3/" target="_blank" rel="noopener noreferrer">
-        <img class="discover-product-img" src="assets/images/life-pod-eco-3.png" alt="Life Pod Eco 3">
+        <img class="discover-product-img" src="assets/images/life-pod-eco-3.png" [attr.alt]="'home.discoverSection.card1ImgAlt' | translate">
         <div class="discover-overlay">
-          <span class="discover-tag">NOTICIAS</span>
-          <h3>Nuevo Life Pod Eco 3 Muy Pronto en Bolivia</h3>
+          <span class="discover-tag">{{ 'home.discoverSection.card1Tag' | translate }}</span>
+          <h3>{{ 'home.discoverSection.card1Title' | translate }}</h3>
           <span class="discover-link">
-            Ver más <ion-icon name="arrow-forward-outline"></ion-icon>
+            {{ 'common.viewMore' | translate }} <ion-icon name="arrow-forward-outline"></ion-icon>
           </span>
         </div>
       </a>
       <a class="discover-card dc-2" routerLink="/guias/primer-vape">
-        <img class="discover-product-img" src="assets/images/vape-display-collection.jpg" alt="Colección de dispositivos de vapeo">
+        <img class="discover-product-img" src="assets/images/vape-display-collection.jpg" [attr.alt]="'common.vapeCollectionImgAlt' | translate">
         <div class="discover-overlay">
-          <span class="discover-tag">GUÍAS</span>
-          <h3>Cómo empezar con tu primer vape</h3>
+          <span class="discover-tag">{{ 'common.guidesTag' | translate }}</span>
+          <h3>{{ 'home.discoverSection.card2Title' | translate }}</h3>
           <span class="discover-link">
-            Leer más <ion-icon name="arrow-forward-outline"></ion-icon>
+            {{ 'common.readMore' | translate }} <ion-icon name="arrow-forward-outline"></ion-icon>
           </span>
         </div>
       </a>
       <a class="discover-card dc-3" routerLink="/guias/sales-vs-base-libre">
-        <img class="discover-product-img" src="assets/images/KingCrest.jpg" alt="Líquidos de sales de nicotina y base libre Kings Crest">
+        <img class="discover-product-img" src="assets/images/KingCrest.jpg" [attr.alt]="'home.discoverSection.card3ImgAlt' | translate">
         <div class="discover-overlay">
-          <span class="discover-tag">TENDENCIAS</span>
-          <h3>Sales o Base Libre: ¿Cuál elegir para tu vape?</h3>
+          <span class="discover-tag">{{ 'home.discoverSection.card3Tag' | translate }}</span>
+          <h3>{{ 'common.salesVsFreebaseTitle' | translate }}</h3>
           <span class="discover-link">
-            Leer más <ion-icon name="arrow-forward-outline"></ion-icon>
+            {{ 'common.readMore' | translate }} <ion-icon name="arrow-forward-outline"></ion-icon>
           </span>
         </div>
       </a>
@@ -124,22 +124,22 @@
       <div class="info-icon-wrap">
         <ion-icon name="shield-checkmark-outline"></ion-icon>
       </div>
-      <h3>Nuestra Tienda</h3>
-      <p>Vendedores y distribuidores de productos de vaping y tabaqueria en Sucre desde 2023.</p>
+      <h3>{{ 'home.infoSection.storeTitle' | translate }}</h3>
+      <p>{{ 'home.infoSection.storeText' | translate }}</p>
     </div>
     <div class="info-card">
       <div class="info-icon-wrap">
         <ion-icon name="ribbon-outline"></ion-icon>
       </div>
-      <h3>Garantía</h3>
-      <p>La garantía de nuestros productos es válida por un período de 24 horas ante desperfectos de fábrica o mala funcionalidad. No nos hacemos responsables por el mal uso que el usuario o cliente le dé al producto.</p>
+      <h3>{{ 'home.infoSection.warrantyTitle' | translate }}</h3>
+      <p>{{ 'home.infoSection.warrantyText' | translate }}</p>
     </div>
     <div class="info-card">
       <div class="info-icon-wrap">
         <ion-icon name="qr-code-outline"></ion-icon>
       </div>
-      <h3>Verificación de Productos</h3>
-      <p>Todos nuestros productos son 100% originales y verificables con código QR oficial.</p>
+      <h3>{{ 'home.infoSection.verificationTitle' | translate }}</h3>
+      <p>{{ 'home.infoSection.verificationText' | translate }}</p>
     </div>
   </section>
 
@@ -150,13 +150,13 @@
     <div class="footer-inner">
 
       <div class="footer-brand">
-        <img src="assets/icon/logo-head-master.png" alt="Drakarys" class="footer-logo" />
-        <span class="footer-brand-name">DRAKARYS</span>
-        <p class="footer-tagline">Vape Store · Bolivia</p>
+        <img src="assets/icon/logo-head-master.png" [attr.alt]="'footer.logoAlt' | translate" class="footer-logo" />
+        <span class="footer-brand-name">{{ 'common.brandName' | translate }}</span>
+        <p class="footer-tagline">{{ 'footer.tagline' | translate }}</p>
       </div>
 
       <div class="footer-col">
-        <h4>Productos</h4>
+        <h4>{{ 'footer.productsTitle' | translate }}</h4>
         <ul>
           <li *ngFor="let category of categories$ | async">
             <a (click)="goToCategory(category.id)">{{ category.name }}</a>
@@ -165,11 +165,11 @@
       </div>
 
       <div class="footer-col">
-        <h4>Contáctanos</h4>
+        <h4>{{ 'footer.contactTitle' | translate }}</h4>
         <div class="footer-social">
           <a
             class="social-icon"
-            title="Instagram"
+            [attr.title]="'footer.instagramTitle' | translate"
             href="https://www.instagram.com/drakarysvapestor/"
             target="_blank"
             rel="noopener noreferrer"
@@ -178,7 +178,7 @@
           </a>
           <a
             class="social-icon"
-            title="Facebook"
+            [attr.title]="'footer.facebookTitle' | translate"
             href="https://www.facebook.com/DrakarysVapeNation?locale=es_LA"
             target="_blank"
             rel="noopener noreferrer"
@@ -187,7 +187,7 @@
           </a>
           <a
             class="social-icon"
-            title="WhatsApp"
+            [attr.title]="'footer.whatsappTitle' | translate"
             [href]="whatsappUrl"
             target="_blank"
             rel="noopener noreferrer"
@@ -202,7 +202,7 @@
           rel="noopener noreferrer"
         >
           <ion-icon name="location-outline"></ion-icon>
-          Sucre, Bolivia
+          {{ 'footer.address' | translate }}
         </a>
         <a class="footer-contact" [href]="phoneHref">
           <ion-icon name="call-outline"></ion-icon>
@@ -212,7 +212,7 @@
 
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Drakarys Vape Store &middot; Solo para mayores de 18 años</p>
+      <p>{{ 'footer.copyright' | translate }}</p>
     </div>
   </footer>
 

@@ -1,1 +1,226 @@
-{}
+{
+  "common": {
+    "addToCart": "Agregar al carrito",
+    "viewMore": "Ver más",
+    "readMore": "Leer más",
+    "backToCatalog": "Volver al catálogo",
+    "guidesTag": "GUÍAS",
+    "brandName": "DRAKARYS",
+    "salesVsFreebaseTitle": "Sales o Base Libre: ¿Cuál elegir para tu vape?",
+    "vapeCollectionImgAlt": "Colección de dispositivos de vapeo",
+    "currencySymbol": "Bs."
+  },
+  "catalog": {
+    "title": "Catálogo",
+    "filtersButton": "Filtros",
+    "activeFilterChips": {
+      "clearAll": "Limpiar todo"
+    },
+    "categoryList": {
+      "all": "Todos"
+    },
+    "emptyState": {
+      "title": "No pudimos encontrar ese producto",
+      "subtitle": "Intenta ajustar tu búsqueda o filtros, o explora una categoría a continuación.",
+      "clearFilters": "Limpiar filtros",
+      "browseCategories": "Explorar categorías:"
+    },
+    "filterPanel": {
+      "cancel": "Cancelar",
+      "title": "Filtros",
+      "reset": "Restablecer",
+      "priceLabel": "Precio: Bs. {{lower}} – Bs. {{upper}}",
+      "apply": "Aplicar Filtros"
+    },
+    "productGrid": {
+      "resultsFoundSingular": "{{count}} producto encontrado",
+      "resultsFoundPlural": "{{count}} productos encontrados",
+      "loadingMore": "Cargando más..."
+    },
+    "searchBar": {
+      "placeholder": "Buscar productos o marcas..."
+    },
+    "sortSelector": {
+      "placeholder": "Ordenar por"
+    }
+  },
+  "cart": {
+    "title": "Mi Carrito",
+    "emptyMessage": "Tu carrito está vacío",
+    "pricePerUnitSuffix": "c/u",
+    "total": "Total",
+    "sendWhatsAppOrder": "Enviar pedido por WhatsApp",
+    "outOfStockToast": "No hay más stock disponible de este producto",
+    "whatsappMessage": {
+      "greeting": "Hola, quiero comprar los siguientes artículos:",
+      "quantityLabel": "Cantidad: {{quantity}}",
+      "priceLabel": "Precio: Bs. {{price}}",
+      "urlLabel": "URL: {{url}}",
+      "totalLabel": "Precio Total: Bs. {{total}}",
+      "thanks": "Gracias."
+    }
+  },
+  "productDetail": {
+    "title": "Detalle del producto",
+    "selectQuantity": "Selecciona una cantidad",
+    "descriptionTitle": "Descripción",
+    "noDescription": "Sin descripción",
+    "notFound": "Producto no encontrado"
+  },
+  "product": {
+    "noImageAlt": "Sin imagen",
+    "viewDetails": "Ver Detalles",
+    "stockBadge": {
+      "inStock": "En stock",
+      "lowStock": "Stock bajo",
+      "outOfStock": "Sin stock"
+    },
+    "addedToCartToast": "{{productName}} agregado al carrito"
+  },
+  "sort": {
+    "relevance": "Relevancia",
+    "priceLowToHigh": "Precio: Menor a Mayor",
+    "priceHighToLow": "Precio: Mayor a Menor",
+    "newest": "Más recientes"
+  },
+  "home": {
+    "hero": {
+      "viewCatalogAriaLabel": "Ver catálogo completo",
+      "bannerAlt": "Drakarys Vape Store"
+    },
+    "catalogSection": {
+      "title": "Nuestros Productos",
+      "subtitle": "Calidad garantizada · Precios en Bs.",
+      "allCategoriesLabel": "Todos",
+      "viewAllButton": "Ver catálogo completo"
+    },
+    "discoverSection": {
+      "title": "Descubre el Vaping",
+      "subtitle": "Guías, noticias y tendencias",
+      "card1ImgAlt": "Life Pod Eco 3",
+      "card1Tag": "NOTICIAS",
+      "card1Title": "Nuevo Life Pod Eco 3 Muy Pronto en Bolivia",
+      "card2Title": "Cómo empezar con tu primer vape",
+      "card3ImgAlt": "Líquidos de sales de nicotina y base libre Kings Crest",
+      "card3Tag": "TENDENCIAS"
+    },
+    "infoSection": {
+      "storeTitle": "Nuestra Tienda",
+      "storeText": "Vendedores y distribuidores de productos de vaping y tabaqueria en Sucre desde 2023.",
+      "warrantyTitle": "Garantía",
+      "warrantyText": "La garantía de nuestros productos es válida por un período de 24 horas ante desperfectos de fábrica o mala funcionalidad. No nos hacemos responsables por el mal uso que el usuario o cliente le dé al producto.",
+      "verificationTitle": "Verificación de Productos",
+      "verificationText": "Todos nuestros productos son 100% originales y verificables con código QR oficial."
+    }
+  },
+  "footer": {
+    "logoAlt": "Drakarys",
+    "tagline": "Vape Store · Bolivia",
+    "productsTitle": "Productos",
+    "contactTitle": "Contáctanos",
+    "instagramTitle": "Instagram",
+    "facebookTitle": "Facebook",
+    "whatsappTitle": "WhatsApp",
+    "address": "Sucre, Bolivia",
+    "copyright": "© 2025 Drakarys Vape Store · Solo para mayores de 18 años"
+  },
+  "ageGate": {
+    "title": "¿Tienes 18 años o más?",
+    "description": "Este sitio vende productos destinados exclusivamente a adultos. Debes tener 18 años o más para ingresar.",
+    "confirmButton": "SÍ, SOY MAYOR DE EDAD",
+    "declineButton": "NO, SOY MENOR DE EDAD"
+  },
+  "storeClosedBanner": {
+    "defaultMessage": "Actualmente estamos cerrados. Vuelve durante nuestro horario de atención."
+  },
+  "guides": {
+    "common": {
+      "disclaimer": "Venta exclusiva para mayores de 18 años."
+    },
+    "primerVape": {
+      "toolbarTitle": "Guía para principiantes",
+      "title": "Guía completa: Cómo empezar en el vapeo y elegir tu dispositivo ideal",
+      "intro": {
+        "paragraph1": "Dar el primer paso en el mundo del vapeo suele generar dudas debido a la gran variedad de formatos, potencias y tipos de líquidos. Si fumás y buscás una alternativa de menor impacto, organismos de salud pública como el Servicio Nacional de Salud del Reino Unido (NHS) señalan que vapear es significativamente menos dañino que fumar tabaco por combustión. Sin embargo, no es una práctica libre de riesgos ni está pensada para personas que nunca han fumado.",
+        "paragraph2": "Para hacer una transición informada, es clave conocer cómo se clasifican los dispositivos y qué tipo de líquido corresponde a cada uno."
+      },
+      "section1": {
+        "title": "El inicio práctico: Desechables y cartuchos intercambiables",
+        "body": "Para dar los primeros pasos, la recomendación principal es comenzar por opciones simples y de menor capacidad (entre 400 y 1.500 puffs) con concentraciones moderadas (2% o 3%), en lugar de saltar directo al formato más grande o al 5% de nicotina. Esto permite evaluar sabores, sensaciones y nivel de saciedad sin gastar de más.",
+        "item1Label": "Desechables simples:",
+        "item1Text": "Su duración va desde los 400 hasta modelos de 70.000 puffs. A partir de los 6.000 puffs, incorporan un puerto de recarga USB para aprovechar todo el contenido antes de descartar el equipo.",
+        "item2Label": "Sistemas de cartucho intercambiable:",
+        "item2Text": "Equipos como el Waka Creator o el Life Pod Eco 2 conservan la batería principal. Una vez que se termina el líquido, solo se reemplaza el cartucho prellenado, reduciendo residuos."
+      },
+      "section2": {
+        "title": "Vapes recargables (abiertos): ¿Sales de Nicotina o Base Libre?",
+        "body": "Cuando se busca mayor personalización, entran los dispositivos recargables de tanque o cartucho abierto. Aquí la compatibilidad entre el equipo y el líquido es fundamental:",
+        "item1Label": "Sistemas Pod (para Sales de Nicotina):",
+        "item1Text": "Dispositivos compactos de baja potencia (10W a 20W) y resistencias altas (0.8Ω a 1.2Ω). Utilizan sales de nicotina (concentraciones de 20 mg/ml a 50 mg/ml), ideales para una calada cerrada (boca a pulmón), golpe de garganta suave y absorción rápida con poco vapor.",
+        "item2Label": "Mods y Pod-Mods (para Base Libre):",
+        "item2Text": "Equipos de mayor tamaño, alta potencia (30W a 80W+) y resistencias bajas sub-ohm (0.15Ω a 0.4Ω). Utilizan nicotina tradicional de base libre en bajas concentraciones (3 mg/ml o 6 mg/ml), produciendo grandes nubes de vapor con calada directa a pulmón."
+      },
+      "section3": {
+        "title": "¿Por qué nunca se deben invertir los líquidos?",
+        "item1Label": "Sales de nicotina en un Mod de alta potencia:",
+        "item1Text": "Es peligroso. Vaporizar líquidos de 35 mg o 50 mg a 50W introduce una dosis excesiva de nicotina en segundos, provocando mareos intensos, náuseas y dolor de cabeza.",
+        "item2Label": "Base libre en un Pod pequeño:",
+        "item2Text": "Ineficiente. Los líquidos de base libre son más densos; en un Pod chico queman la resistencia rápido por falta de drenaje y, al tener solo 3 mg o 6 mg de nicotina, no generan saciedad en caladas discretas."
+      },
+      "table": {
+        "header1": "Tipo de Vape",
+        "header2": "Potencia y Resistencia",
+        "header3": "Líquido compatible",
+        "header4": "Estilo de calada",
+        "row1Col1": "Desechable / Prellenado",
+        "row1Col2": "Fija (automática)",
+        "row1Col3": "Sal de nicotina integrada",
+        "row1Col4": "Boca a pulmón (MTL)",
+        "row2Col1": "Pod Recargable",
+        "row2Col2": "Baja (10W - 20W / ≥0.8Ω)",
+        "row2Col3": "Sales de nicotina (20 - 50 mg)",
+        "row2Col4": "Boca a pulmón (MTL)",
+        "row3Col1": "Mod / Sub-ohm",
+        "row3Col2": "Alta (30W - 80W+ / ≤0.4Ω)",
+        "row3Col3": "Base libre (3 - 6 mg)",
+        "row3Col4": "Directo a pulmón (DTL)"
+      },
+      "section4": {
+        "title": "Cuidados básicos del equipo",
+        "item1": "Usá cargadores estándar o puertos USB de computadora; evitá cargadores ultrarrápidos de celular para no degradar la batería.",
+        "item2": "Mantené los dispositivos lejos de fuentes de calor directo o del interior de vehículos para prevenir filtraciones.",
+        "item3": "Da caladas suaves y pausadas para permitir que el algodón se rehidrate adecuadamente entre caladas."
+      }
+    },
+    "salesVsFreebase": {
+      "toolbarTitle": "Sales vs. Base Libre",
+      "heroImgAlt": "Botellas de líquido base libre 100ml y sales de nicotina 30ml Kings Crest",
+      "intro": "Elegir el líquido equivocado para tu dispositivo no es solo una cuestión de sabor — puede arruinarte la experiencia por completo, o directamente hacerte sentir mal. Acá te explicamos por qué, según el ohmiaje de tu equipo.",
+      "section1": {
+        "title": "¿Qué son las sales de nicotina?",
+        "body1": "Químicamente, son la misma nicotina que la base libre, pero tratada con un ácido (generalmente benzoico) que baja su pH. Ese cambio hace dos cosas clave: suaviza muchísimo la sensación en la garganta —incluso en concentraciones altas, de 20mg a 50mg— y hace que la nicotina llegue más rápido al cuerpo.",
+        "body2": "Funcionan bien en dispositivos de resistencia alta (0.8Ω o más) y baja potencia (10W a 20W) — ese tipo de equipo, generalmente de calada cerrada (boca a pulmón), es donde las sales rinden mejor."
+      },
+      "section2": {
+        "title": "¿Qué es la base libre?",
+        "body1": "Es la nicotina en su forma tradicional, sin tratar. Tiene un pH más alto (más alcalino), lo que le da esa sensación de \"golpe\" en la garganta característica — agradable para algunos, molesta para otros si la concentración es muy alta. Por eso casi siempre se vende en niveles bajos, entre 3mg y 6mg: a concentraciones mayores, ese golpe se vuelve incómodo.",
+        "body2": "Funciona mejor en dispositivos de resistencia baja (0.5Ω o menos) y potencia alta (30W en adelante) — los mods y sub-ohm, pensados para calada directa a pulmón y mucha nube."
+      },
+      "section3": {
+        "title": "Si le ponés sales a un dispositivo de alta potencia (sub-ohm)",
+        "body": "Doble problema. Primero, las sales suelen venir en concentraciones altas (30-50mg) — a alta potencia, cada calada vaporiza mucho más líquido de una sola vez, así que terminás inhalando una cantidad de nicotina muy por encima de lo que tu cuerpo puede procesar cómodamente. El resultado: mareos, náuseas, dolor de cabeza, taquicardia. No es raro, es una reacción química esperable."
+      },
+      "section4": {
+        "title": "Si le ponés base libre a un pod chico (baja potencia)",
+        "body": "Acá el problema es al revés: como la base libre suele venir en concentraciones bajas (3-6mg) y un pod chico ya de por sí genera poco vapor por calada, es difícil sentir satisfacción — vas a terminar dando muchas más caladas de las que darías con sales, sin lograr el mismo efecto. Además, la base libre suele ser más espesa, y en una resistencia chica sin buen flujo puede saturar la mecha más rápido, dejándote sabor a quemado antes de tiempo."
+      },
+      "section5": {
+        "title": "La regla simple",
+        "item1": "¿Tu dispositivo marca 0.8Ω o más? → Sales de nicotina.",
+        "item2": "¿Tu dispositivo marca 0.5Ω o menos? → Base libre.",
+        "item3": "¿Es un pod cerrado, sin ajustes de potencia? → Sales de nicotina.",
+        "item4": "¿Es un mod o tanque abierto, con control de watts? → Base libre."
+      }
+    }
+  }
+}

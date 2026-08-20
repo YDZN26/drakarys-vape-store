@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 import { Product } from '../../../core/models/product.model';
 import { StockStatus, getStockStatus } from '../../../core/models/stock-status.model';
 import { CartService } from '../../../core/cart/cart.service';
@@ -16,7 +17,8 @@ export class ProductCardComponent {
 
   constructor(
     private readonly cartService: CartService,
-    private readonly toastCtrl: ToastController
+    private readonly toastCtrl: ToastController,
+    private readonly translateService: TranslateService
   ) {}
 
   get stockStatus(): StockStatus {
@@ -33,9 +35,9 @@ export class ProductCardComponent {
 
   get stockBadgeLabel(): string {
     switch (this.stockStatus) {
-      case StockStatus.OutOfStock: return 'Sin stock';
-      case StockStatus.LowStock:   return 'Stock bajo';
-      default:                     return 'En stock';
+      case StockStatus.OutOfStock: return this.translateService.instant('product.stockBadge.outOfStock');
+      case StockStatus.LowStock:   return this.translateService.instant('product.stockBadge.lowStock');
+      default:                     return this.translateService.instant('product.stockBadge.inStock');
     }
   }
 
@@ -52,7 +54,7 @@ export class ProductCardComponent {
     this.cartService.addItem(this.product, 1);
 
     const toast = await this.toastCtrl.create({
-      message: `${this.product.name} agregado al carrito`,
+      message: this.translateService.instant('product.addedToCartToast', { productName: this.product.name }),
       duration: 1500,
       position: 'bottom',
       color: 'success',

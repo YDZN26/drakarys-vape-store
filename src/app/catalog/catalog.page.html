@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home" class="catalog-back-btn"></ion-back-button>
     </ion-buttons>
-    <ion-title><span class="toolbar-brand">Catálogo</span></ion-title>
+    <ion-title><span class="toolbar-brand">{{ 'catalog.title' | translate }}</span></ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="goToCart()" class="catalog-icon-btn cart-btn">
         <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
@@ -34,7 +34,7 @@
     ></app-sort-selector>
     <ion-button fill="clear" size="small" class="filter-btn" (click)="openFilterPanel()">
       <ion-icon slot="start" name="funnel-outline"></ion-icon>
-      Filtros
+      {{ 'catalog.filtersButton' | translate }}
     </ion-button>
   </div>
 

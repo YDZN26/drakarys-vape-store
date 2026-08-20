@@ -1,11 +1,11 @@
 <ion-select
   [value]="value"
-  placeholder="Sort by"
+  [placeholder]="'catalog.sortSelector.placeholder' | translate"
   interface="popover"
   (ionChange)="onChange($event)"
   class="sort-select"
 >
   <ion-select-option *ngFor="let opt of options" [value]="opt.value">
-    {{ opt.label }}
+    {{ opt.label | translate }}
   </ion-select-option>
 </ion-select>

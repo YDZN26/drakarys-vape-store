@@ -12,10 +12,10 @@ export class SortSelectorComponent {
   @Output() sortChange = new EventEmitter<SortOption>();
 
   readonly options = [
-    { value: SortOption.Relevance, label: 'Relevance' },
-    { value: SortOption.PriceLowToHigh, label: 'Price: Low to High' },
-    { value: SortOption.PriceHighToLow, label: 'Price: High to Low' },
-    { value: SortOption.Newest, label: 'Newest' },
+    { value: SortOption.Relevance, label: 'sort.relevance' },
+    { value: SortOption.PriceLowToHigh, label: 'sort.priceLowToHigh' },
+    { value: SortOption.PriceHighToLow, label: 'sort.priceHighToLow' },
+    { value: SortOption.Newest, label: 'sort.newest' },
   ];
 
   onChange(event: CustomEvent): void {

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/catalog" class="cart-back-btn"></ion-back-button>
     </ion-buttons>
-    <ion-title><span class="toolbar-brand">Mi Carrito</span></ion-title>
+    <ion-title><span class="toolbar-brand">{{ 'cart.title' | translate }}</span></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,9 +11,9 @@
   <ng-container *ngIf="(items$ | async) as items">
     <div class="empty-cart" *ngIf="items.length === 0">
       <ion-icon name="cart-outline" class="empty-icon"></ion-icon>
-      <p>Tu carrito está vacío</p>
+      <p>{{ 'cart.emptyMessage' | translate }}</p>
       <ion-button fill="outline" (click)="goToCatalog()">
-        Volver al catálogo
+        {{ 'common.backToCatalog' | translate }}
       </ion-button>
     </div>
 
@@ -28,7 +28,7 @@
         </ion-thumbnail>
         <ion-label>
           <h3>{{ item.product.name }}</h3>
-          <p>Bs. {{ item.product.price | number: '1.2-2' }} c/u</p>
+          <p>Bs. {{ item.product.price | number: '1.2-2' }} {{ 'cart.pricePerUnitSuffix' | translate }}</p>
           <div class="qty-controls">
             <ion-button fill="clear" size="small" class="qty-btn" (click)="decrease(item)">
               <ion-icon slot="icon-only" name="remove-circle-outline"></ion-icon>
@@ -56,7 +56,7 @@
 
     <div class="cart-summary">
       <div class="total-row">
-        <span>Total</span>
+        <span>{{ 'cart.total' | translate }}</span>
         <span class="total-value">Bs. {{ (totalPrice$ | async) | number: '1.2-2' }}</span>
       </div>
       <ion-button
@@ -66,7 +66,7 @@
         (click)="sendWhatsAppOrder()"
       >
         <ion-icon slot="start" name="logo-whatsapp"></ion-icon>
-        Enviar pedido por WhatsApp
+        {{ 'cart.sendWhatsAppOrder' | translate }}
       </ion-button>
     </div>
   </ng-container>

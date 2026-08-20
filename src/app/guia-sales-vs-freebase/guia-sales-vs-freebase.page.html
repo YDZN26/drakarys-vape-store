@@ -3,64 +3,64 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home" class="guide-back-btn"></ion-back-button>
     </ion-buttons>
-    <ion-title><span class="toolbar-brand">Sales vs. Base Libre</span></ion-title>
+    <ion-title><span class="toolbar-brand">{{ 'guides.salesVsFreebase.toolbarTitle' | translate }}</span></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="guide-content">
   <article class="guide-article">
-    <img class="guide-hero-img" src="assets/images/KingCrest.jpg" alt="Botellas de líquido base libre 100ml y sales de nicotina 30ml Kings Crest">
-    <p class="brand">GUÍAS</p>
-    <h1 class="name">Sales o Base Libre: ¿Cuál elegir para tu vape?</h1>
+    <img class="guide-hero-img" src="assets/images/KingCrest.jpg" [attr.alt]="'guides.salesVsFreebase.heroImgAlt' | translate">
+    <p class="brand">{{ 'common.guidesTag' | translate }}</p>
+    <h1 class="name">{{ 'common.salesVsFreebaseTitle' | translate }}</h1>
 
     <p class="description">
-      Elegir el líquido equivocado para tu dispositivo no es solo una cuestión de sabor — puede arruinarte la experiencia por completo, o directamente hacerte sentir mal. Acá te explicamos por qué, según el ohmiaje de tu equipo.
+      {{ 'guides.salesVsFreebase.intro' | translate }}
     </p>
 
     <section class="description-section">
-      <h2>¿Qué son las sales de nicotina?</h2>
+      <h2>{{ 'guides.salesVsFreebase.section1.title' | translate }}</h2>
       <p class="description">
-        Químicamente, son la misma nicotina que la base libre, pero tratada con un ácido (generalmente benzoico) que baja su pH. Ese cambio hace dos cosas clave: suaviza muchísimo la sensación en la garganta —incluso en concentraciones altas, de 20mg a 50mg— y hace que la nicotina llegue más rápido al cuerpo.
+        {{ 'guides.salesVsFreebase.section1.body1' | translate }}
       </p>
       <p class="description">
-        Funcionan bien en dispositivos de resistencia alta (0.8Ω o más) y baja potencia (10W a 20W) — ese tipo de equipo, generalmente de calada cerrada (boca a pulmón), es donde las sales rinden mejor.
-      </p>
-    </section>
-
-    <section class="description-section">
-      <h2>¿Qué es la base libre?</h2>
-      <p class="description">
-        Es la nicotina en su forma tradicional, sin tratar. Tiene un pH más alto (más alcalino), lo que le da esa sensación de "golpe" en la garganta característica — agradable para algunos, molesta para otros si la concentración es muy alta. Por eso casi siempre se vende en niveles bajos, entre 3mg y 6mg: a concentraciones mayores, ese golpe se vuelve incómodo.
-      </p>
-      <p class="description">
-        Funciona mejor en dispositivos de resistencia baja (0.5Ω o menos) y potencia alta (30W en adelante) — los mods y sub-ohm, pensados para calada directa a pulmón y mucha nube.
+        {{ 'guides.salesVsFreebase.section1.body2' | translate }}
       </p>
     </section>
 
     <section class="description-section">
-      <h2>Si le ponés sales a un dispositivo de alta potencia (sub-ohm)</h2>
+      <h2>{{ 'guides.salesVsFreebase.section2.title' | translate }}</h2>
       <p class="description">
-        Doble problema. Primero, las sales suelen venir en concentraciones altas (30-50mg) — a alta potencia, cada calada vaporiza mucho más líquido de una sola vez, así que terminás inhalando una cantidad de nicotina muy por encima de lo que tu cuerpo puede procesar cómodamente. El resultado: mareos, náuseas, dolor de cabeza, taquicardia. No es raro, es una reacción química esperable.
+        {{ 'guides.salesVsFreebase.section2.body1' | translate }}
+      </p>
+      <p class="description">
+        {{ 'guides.salesVsFreebase.section2.body2' | translate }}
       </p>
     </section>
 
     <section class="description-section">
-      <h2>Si le ponés base libre a un pod chico (baja potencia)</h2>
+      <h2>{{ 'guides.salesVsFreebase.section3.title' | translate }}</h2>
       <p class="description">
-        Acá el problema es al revés: como la base libre suele venir en concentraciones bajas (3-6mg) y un pod chico ya de por sí genera poco vapor por calada, es difícil sentir satisfacción — vas a terminar dando muchas más caladas de las que darías con sales, sin lograr el mismo efecto. Además, la base libre suele ser más espesa, y en una resistencia chica sin buen flujo puede saturar la mecha más rápido, dejándote sabor a quemado antes de tiempo.
+        {{ 'guides.salesVsFreebase.section3.body' | translate }}
       </p>
     </section>
 
     <section class="description-section">
-      <h2>La regla simple</h2>
+      <h2>{{ 'guides.salesVsFreebase.section4.title' | translate }}</h2>
+      <p class="description">
+        {{ 'guides.salesVsFreebase.section4.body' | translate }}
+      </p>
+    </section>
+
+    <section class="description-section">
+      <h2>{{ 'guides.salesVsFreebase.section5.title' | translate }}</h2>
       <ul class="article-list">
-        <li>¿Tu dispositivo marca 0.8Ω o más? → Sales de nicotina.</li>
-        <li>¿Tu dispositivo marca 0.5Ω o menos? → Base libre.</li>
-        <li>¿Es un pod cerrado, sin ajustes de potencia? → Sales de nicotina.</li>
-        <li>¿Es un mod o tanque abierto, con control de watts? → Base libre.</li>
+        <li>{{ 'guides.salesVsFreebase.section5.item1' | translate }}</li>
+        <li>{{ 'guides.salesVsFreebase.section5.item2' | translate }}</li>
+        <li>{{ 'guides.salesVsFreebase.section5.item3' | translate }}</li>
+        <li>{{ 'guides.salesVsFreebase.section5.item4' | translate }}</li>
       </ul>
     </section>
 
-    <p class="guide-disclaimer">Venta exclusiva para mayores de 18 años.</p>
+    <p class="guide-disclaimer">{{ 'guides.common.disclaimer' | translate }}</p>
   </article>
 </ion-content>

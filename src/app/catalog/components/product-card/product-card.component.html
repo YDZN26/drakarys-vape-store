@@ -5,7 +5,7 @@
     </ng-container>
     <ng-template #placeholder>
       <div class="img-placeholder">
-        <img [src]="mainImage" alt="Sin imagen" class="placeholder-logo" />
+        <img [src]="mainImage" [attr.alt]="'product.noImageAlt' | translate" class="placeholder-logo" />
       </div>
     </ng-template>
     <ion-badge [color]="stockBadgeColor" class="stock-badge">
@@ -24,7 +24,7 @@
       class="view-details-btn"
       (click)="tap()"
     >
-      Ver Detalles
+      {{ 'product.viewDetails' | translate }}
     </ion-button>
     <ion-button
       expand="block"
@@ -35,7 +35,7 @@
       (click)="addToCart($event)"
     >
       <ion-icon slot="start" name="cart-outline"></ion-icon>
-      Agregar al carrito
+      {{ 'common.addToCart' | translate }}
     </ion-button>
   </ion-card-content>
 </ion-card>

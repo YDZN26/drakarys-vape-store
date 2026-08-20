@@ -1,5 +1,5 @@
 <div class="result-count" *ngIf="!loading || products.length > 0">
-  <span>{{ resultCount }} {{ resultCount === 1 ? 'product' : 'products' }} found</span>
+  <span>{{ (resultCount === 1 ? 'catalog.productGrid.resultsFoundSingular' : 'catalog.productGrid.resultsFoundPlural') | translate: { count: resultCount } }}</span>
 </div>
 
 <div class="products-grid">
@@ -27,6 +27,6 @@
 >
   <ion-infinite-scroll-content
     loadingSpinner="bubbles"
-    loadingText="Loading more..."
+    [loadingText]="'catalog.productGrid.loadingMore' | translate"
   ></ion-infinite-scroll-content>
 </ion-infinite-scroll>

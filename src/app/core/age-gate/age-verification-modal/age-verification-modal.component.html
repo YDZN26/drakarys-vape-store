@@ -4,10 +4,9 @@
       <img src="assets/icon/logo-head-master.png" alt="Drakarys" class="logo" />
     </div>
 
-    <h1>¿Tienes 18 años o más?</h1>
+    <h1>{{ 'ageGate.title' | translate }}</h1>
     <p>
-      Este sitio vende productos destinados exclusivamente a adultos.
-      Debes tener 18 años o más para ingresar.
+      {{ 'ageGate.description' | translate }}
     </p>
 
     <ion-button
@@ -18,7 +17,7 @@
       (click)="confirm()"
     >
       <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
-      SÍ, SOY MAYOR DE EDAD
+      {{ 'ageGate.confirmButton' | translate }}
     </ion-button>
 
     <ion-button
@@ -30,7 +29,7 @@
       (click)="decline()"
     >
       <ion-icon slot="start" name="close-circle-outline"></ion-icon>
-      NO, SOY MENOR DE EDAD
+      {{ 'ageGate.declineButton' | translate }}
     </ion-button>
   </div>
 </ion-content>

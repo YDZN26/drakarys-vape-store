@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { CartItem } from '../core/models/cart-item.model';
 import { CartService } from '../core/cart/cart.service';
@@ -18,13 +19,14 @@ export class CartPage {
   constructor(
     private readonly cartService: CartService,
     private readonly router: Router,
-    private readonly toastCtrl: ToastController
+    private readonly toastCtrl: ToastController,
+    private readonly translateService: TranslateService
   ) {}
 
   async increase(item: CartItem): Promise<void> {
     if (item.quantity >= item.product.stock) {
       const toast = await this.toastCtrl.create({
-        message: 'No hay más stock disponible de este producto',
+        message: this.translateService.instant('cart.outOfStockToast'),
         duration: 1500,
         position: 'bottom',
         color: 'warning',

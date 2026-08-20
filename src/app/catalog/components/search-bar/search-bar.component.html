@@ -1,6 +1,6 @@
 <ion-searchbar
   [value]="value"
-  placeholder="Search products or brands..."
+  [placeholder]="'catalog.searchBar.placeholder' | translate"
   animated
   (ionInput)="onInput($event)"
   (ionClear)="onClear()"

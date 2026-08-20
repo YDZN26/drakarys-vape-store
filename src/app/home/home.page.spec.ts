@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
 
 import { HomePage } from './home.page';
@@ -21,7 +22,7 @@ describe('HomePage', () => {
 
     await TestBed.configureTestingModule({
       declarations: [HomePage],
-      imports: [IonicModule.forRoot()],
+      imports: [IonicModule.forRoot(), TranslateModule.forRoot()],
       providers: [
         { provide: CategoryService, useValue: categoryServiceSpy },
         { provide: ProductService, useValue: productServiceSpy },

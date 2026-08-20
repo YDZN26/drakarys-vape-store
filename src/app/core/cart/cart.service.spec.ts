@@ -1,8 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 import { firstValueFrom } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CartService } from './cart.service';
 import { Product } from '../models/product.model';
 import { environment } from '../../../environments/environment';
+
+const CART_TRANSLATIONS = {
+  cart: {
+    whatsappMessage: {
+      greeting: 'Hola, quiero comprar los siguientes artículos:',
+      quantityLabel: 'Cantidad: {{quantity}}',
+      priceLabel: 'Precio: Bs. {{price}}',
+      urlLabel: 'URL: {{url}}',
+      totalLabel: 'Precio Total: Bs. {{total}}',
+      thanks: 'Gracias.',
+    },
+  },
+};
 
 function makeProduct(overrides: Partial<Product> = {}): Product {
   return {
@@ -28,8 +42,14 @@ describe('CartService', () => {
 
   beforeEach(() => {
     localStorage.clear();
-    TestBed.configureTestingModule({ providers: [CartService] });
+    TestBed.configureTestingModule({
+      imports: [TranslateModule.forRoot()],
+      providers: [CartService],
+    });
     service = TestBed.inject(CartService);
+    const translateService = TestBed.inject(TranslateService);
+    translateService.setTranslation('es', CART_TRANSLATIONS, true);
+    translateService.use('es');
   });
 
   afterEach(() => {

@@ -3,7 +3,7 @@
     [class.active]="activeCategoryId === null"
     (click)="select(null)"
   >
-    All
+    {{ 'catalog.categoryList.all' | translate }}
   </ion-chip>
   <ion-chip
     *ngFor="let category of categories"

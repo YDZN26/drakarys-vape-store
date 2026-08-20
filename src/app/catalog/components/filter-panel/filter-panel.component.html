@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="close()">Cancel</ion-button>
+      <ion-button (click)="close()">{{ 'catalog.filterPanel.cancel' | translate }}</ion-button>
     </ion-buttons>
-    <ion-title>Filters</ion-title>
+    <ion-title>{{ 'catalog.filterPanel.title' | translate }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="reset()" color="medium">Reset</ion-button>
+      <ion-button (click)="reset()" color="medium">{{ 'catalog.filterPanel.reset' | translate }}</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +14,7 @@
   <ion-list lines="none">
     <ion-list-header>
       <ion-label>
-        Precio: Bs. {{ priceRange.lower }} – Bs. {{ priceRange.upper }}
+        {{ 'catalog.filterPanel.priceLabel' | translate: { lower: priceRange.lower, upper: priceRange.upper } }}
       </ion-label>
     </ion-list-header>
     <ion-item>
@@ -38,7 +38,7 @@
 <ion-footer>
   <ion-toolbar>
     <div class="footer-actions">
-      <ion-button expand="block" (click)="apply()">Apply Filters</ion-button>
+      <ion-button expand="block" (click)="apply()">{{ 'catalog.filterPanel.apply' | translate }}</ion-button>
     </div>
   </ion-toolbar>
 </ion-footer>
