@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { CATEGORY_TRANSLATIONS } from '../constants/category-translations';
 
 const LANG_STORAGE_KEY = 'drakarys_lang';
-type SupportedLang = 'es' | 'en';
+export type SupportedLang = 'es' | 'en';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LanguageService {
+  private readonly currentLangSubject = new BehaviorSubject<SupportedLang>('es');
+  readonly currentLang$: Observable<SupportedLang> = this.currentLangSubject.asObservable();
+
   constructor(private translate: TranslateService) {
     this.translate.addLangs(['es', 'en']);
     this.translate.setDefaultLang('es');
@@ -17,7 +21,7 @@ export class LanguageService {
   init(): void {
     const storedLang = localStorage.getItem(LANG_STORAGE_KEY) as SupportedLang | null;
     if (storedLang === 'es' || storedLang === 'en') {
-      this.translate.use(storedLang);
+      this.applyLanguage(storedLang);
       return;
     }
     this.detectAndSetLanguage();
@@ -26,11 +30,11 @@ export class LanguageService {
   detectAndSetLanguage(): void {
     const browserLang = navigator.language || navigator.languages?.[0] || '';
     const lang: SupportedLang = browserLang.toLowerCase().startsWith('en') ? 'en' : 'es';
-    this.translate.use(lang);
+    this.applyLanguage(lang);
   }
 
   setLanguage(lang: SupportedLang): void {
-    this.translate.use(lang);
+    this.applyLanguage(lang);
     localStorage.setItem(LANG_STORAGE_KEY, lang);
   }
 
@@ -39,6 +43,12 @@ export class LanguageService {
     if (!translation) {
       return categoryName;
     }
-    return this.translate.currentLang === 'en' ? translation.en : translation.es;
+    return this.currentLangSubject.value === 'en' ? translation.en : translation.es;
+  }
+
+  private applyLanguage(lang: SupportedLang): void {
+    this.translate.use(lang);
+    this.currentLangSubject.next(lang);
+    document.documentElement.lang = lang;
   }
 }

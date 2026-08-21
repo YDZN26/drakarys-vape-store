@@ -1,0 +1,14 @@
+<div class="lang-toggle" role="group" [attr.aria-label]="'Language selector'">
+  <button
+    type="button"
+    class="lang-btn"
+    [class.active]="(activeLang$ | async) === 'es'"
+    (click)="setLanguage('es')"
+  >ES</button>
+  <button
+    type="button"
+    class="lang-btn"
+    [class.active]="(activeLang$ | async) === 'en'"
+    (click)="setLanguage('en')"
+  >EN</button>
+</div>

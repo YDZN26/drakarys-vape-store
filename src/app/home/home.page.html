@@ -4,6 +4,7 @@
       <span class="toolbar-brand">{{ 'common.brandName' | translate }}</span>
     </ion-title>
     <ion-buttons slot="end">
+      <app-language-toggle></app-language-toggle>
       <ion-button (click)="goToCatalog()" class="toolbar-btn">
         <ion-icon slot="icon-only" name="grid-outline"></ion-icon>
       </ion-button>
@@ -93,7 +94,7 @@
           </span>
         </div>
       </a>
-      <a class="discover-card dc-2" routerLink="/guias/primer-vape">
+      <a class="discover-card dc-2" routerLink="/guides/first-vape">
         <img class="discover-product-img" src="assets/images/vape-display-collection.jpg" [attr.alt]="'common.vapeCollectionImgAlt' | translate">
         <div class="discover-overlay">
           <span class="discover-tag">{{ 'common.guidesTag' | translate }}</span>
@@ -103,7 +104,7 @@
           </span>
         </div>
       </a>
-      <a class="discover-card dc-3" routerLink="/guias/sales-vs-base-libre">
+      <a class="discover-card dc-3" routerLink="/guides/salt-vs-freebase">
         <img class="discover-product-img" src="assets/images/KingCrest.jpg" [attr.alt]="'home.discoverSection.card3ImgAlt' | translate">
         <div class="discover-overlay">
           <span class="discover-tag">{{ 'home.discoverSection.card3Tag' | translate }}</span>

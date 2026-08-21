@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GuiaSalesVsFreebasePage } from './guia-sales-vs-freebase.page';
+import { SaltVsFreebaseGuidePage } from './salt-vs-freebase-guide.page';
 import { ageGuard } from '../core/age-gate/age.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: GuiaSalesVsFreebasePage,
+    component: SaltVsFreebaseGuidePage,
     canActivate: [ageGuard],
   },
 ];
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class GuiaSalesVsFreebaseRoutingModule {}
+export class SaltVsFreebaseGuideRoutingModule {}

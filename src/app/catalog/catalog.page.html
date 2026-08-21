@@ -5,6 +5,7 @@
     </ion-buttons>
     <ion-title><span class="toolbar-brand">{{ 'catalog.title' | translate }}</span></ion-title>
     <ion-buttons slot="end">
+      <app-language-toggle></app-language-toggle>
       <ion-button (click)="goToCart()" class="catalog-icon-btn cart-btn">
         <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
         <ion-badge

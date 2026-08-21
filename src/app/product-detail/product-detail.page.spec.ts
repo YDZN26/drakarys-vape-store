@@ -5,6 +5,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 
 import { ProductDetailPage } from './product-detail.page';
+import { CoreModule } from '../core/core.module';
 import { ProductService } from '../catalog/services/product.service';
 import { CartService } from '../core/cart/cart.service';
 import { Product } from '../core/models/product.model';
@@ -39,7 +40,7 @@ describe('ProductDetailPage', () => {
 
     await TestBed.configureTestingModule({
       declarations: [ProductDetailPage],
-      imports: [IonicModule.forRoot(), TranslateModule.forRoot()],
+      imports: [IonicModule.forRoot(), TranslateModule.forRoot(), CoreModule],
       providers: [
         { provide: ProductService, useValue: productServiceSpy },
         { provide: CartService, useValue: cartServiceSpy },

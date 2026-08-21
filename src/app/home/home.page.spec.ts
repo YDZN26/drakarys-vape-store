@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
 
 import { HomePage } from './home.page';
+import { CoreModule } from '../core/core.module';
 import { CategoryService } from '../catalog/services/category.service';
 import { ProductService } from '../catalog/services/product.service';
 
@@ -22,7 +23,7 @@ describe('HomePage', () => {
 
     await TestBed.configureTestingModule({
       declarations: [HomePage],
-      imports: [IonicModule.forRoot(), TranslateModule.forRoot()],
+      imports: [IonicModule.forRoot(), TranslateModule.forRoot(), CoreModule],
       providers: [
         { provide: CategoryService, useValue: categoryServiceSpy },
         { provide: ProductService, useValue: productServiceSpy },

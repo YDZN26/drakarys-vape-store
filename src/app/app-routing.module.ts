@@ -23,13 +23,23 @@ const routes: Routes = [
   },
   {
     path: 'guias/primer-vape',
-    loadChildren: () =>
-      import('./guia-primer-vape/guia-primer-vape.module').then(m => m.GuiaPrimerVapeModule),
+    redirectTo: 'guides/first-vape',
+    pathMatch: 'full',
   },
   {
     path: 'guias/sales-vs-base-libre',
+    redirectTo: 'guides/salt-vs-freebase',
+    pathMatch: 'full',
+  },
+  {
+    path: 'guides/first-vape',
     loadChildren: () =>
-      import('./guia-sales-vs-freebase/guia-sales-vs-freebase.module').then(m => m.GuiaSalesVsFreebaseModule),
+      import('./first-vape-guide/first-vape-guide.module').then(m => m.FirstVapeGuideModule),
+  },
+  {
+    path: 'guides/salt-vs-freebase',
+    loadChildren: () =>
+      import('./salt-vs-freebase-guide/salt-vs-freebase-guide.module').then(m => m.SaltVsFreebaseGuideModule),
   },
   {
     path: '',

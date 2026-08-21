@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GuiaPrimerVapePage } from './guia-primer-vape.page';
+import { FirstVapeGuidePage } from './first-vape-guide.page';
 import { ageGuard } from '../core/age-gate/age.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: GuiaPrimerVapePage,
+    component: FirstVapeGuidePage,
     canActivate: [ageGuard],
   },
 ];
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class GuiaPrimerVapeRoutingModule {}
+export class FirstVapeGuideRoutingModule {}
